@@ -1,6 +1,5 @@
 "use client";
 
-import Title from "@/components/ui/Title";
 import React from "react";
 import RegistrationStats from "./RegistrationStats";
 import DeregistrationReasons from "./DeregistrationReasons";

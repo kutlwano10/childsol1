@@ -9,7 +9,7 @@ interface RadioOption {
 interface RadioGroupProps {
   name: string;
   options: RadioOption[];
-  selectedValue: string;
+  selectedValue?: string;
   onChange: (value: string) => void;
   className?: string;
   orientation?: 'horizontal' | 'vertical';

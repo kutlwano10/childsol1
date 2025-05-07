@@ -44,7 +44,7 @@ export default function Conditions({
       nextButtonText="Next Step"
       onPrevious={onPrevious}
     >
-      <div className="fee-policy p-6  mx-auto   text-sm space-y-4">
+      <div className="fee-policy p-6 mx-auto text-sm space-y-4">
         <ol className="list-[lower-roman] pl-6 space-y-5 marker:font-semibold">
           <li className="pl-2">
             Fees for Adhoc and Monthly services are payable upfront. Fees for
@@ -55,10 +55,10 @@ export default function Conditions({
 
           <li className="pl-2">
             Failure to pay school fees within the required timeframe may result
-            in the child's account being handed over for data collection. A 15%
-            debt collection fee adopted on the principal debt outstanding shall
-            be levied on the child's account in addition to any other incidental
-            legal costs.
+            in the child&apos;s account being handed over for data collection. A
+            15% debt collection fee adopted on the principal debt outstanding
+            shall be levied on the child&apos;s account in addition to any other
+            incidental legal costs.
           </li>
 
           <li className="pl-2">
@@ -97,11 +97,11 @@ export default function Conditions({
           </li>
 
           <li className="pl-2">
-            Fees are paid through Electronic Transfers ("EFT") into ChildSol
-            designated bank account. NO cash deposits are allowed. Cash deposits
-            attract bank charges, and the Pre-school will debit the parent's
-            account with any bank charges incurred as a result of a cash
-            deposit.
+            Fees are paid through Electronic Transfers (&quot;EFT&quot;) into
+            ChildSol designated bank account. NO cash deposits are allowed. Cash
+            deposits attract bank charges, and the Pre-school will debit the
+            parent&apos;s account with any bank charges incurred as a result of
+            a cash deposit.
           </li>
 
           <li className="pl-2">
@@ -113,8 +113,8 @@ export default function Conditions({
             ChildSol is affiliated with TFN Credit Bureau, a registered credit
             bureau; all account payment profiles, patterns, and behaviors are
             recorded monthly with the credit bureau for purposes as per the
-            National Credit Act No. 34 of 2005 ("NCA"). The parent hereby
-            consents to ChildSol to:
+            National Credit Act No. 34 of 2005 (&quot;NCA&quot;). The parent
+            hereby consents to ChildSol to:
             <ul className="list-disc pl-5 mt-2 space-y-2">
               <li>
                 Contact, request, and obtain information from any credit

@@ -16,7 +16,7 @@ interface ChildInfoProps {
 }
 
 
-export default function ChildInformationForm({initialData = {}, onChange, onPrevious, onNext} : ChildInfoProps) {
+export default function ChildInformationForm({initialData = {}, onChange, onNext} : ChildInfoProps) {
   const [childInfo, setChildInfo] = useState<Partial<ChildInfo>>(initialData);
 
    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -165,7 +165,7 @@ export default function ChildInformationForm({initialData = {}, onChange, onPrev
             <RadioGroup
               name="diagnoses"
               options={diagnosesList}
-              selectedValue={childInfo.diagnoses || ''}
+              
               onChange={(value) => handleRadioChange("Diagnoses", value)}
               className='grid grid-cols-2'
             />

@@ -33,11 +33,11 @@ interface StudentCardProps {
 
 const StudentCard: React.FC<StudentCardProps> = ({
   student,
-  onApprove,
+  
   onView,
-  onArchive,
+  
   showOptions = true,
-  showActions = true,
+  
   className,
   teacherName,
   classRoomNumber,

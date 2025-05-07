@@ -15,8 +15,6 @@ export default function MultiStepForm() {
 
   const prevStep = () => setStep(step - 1);
 
-  const handleSubmit = () => {};
-
   const renderStep = () => {
     switch (step) {
       case 1:

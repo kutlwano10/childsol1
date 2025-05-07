@@ -20,7 +20,6 @@ export default function ClassAttendance() {
   const pathname = usePathname();
   
   const grade = searchParams.get('grade');
-  const classId = searchParams.get('class');
   
   const handleBack = () => {
     router.push(`${pathname}?view=classes&grade=${grade}`);

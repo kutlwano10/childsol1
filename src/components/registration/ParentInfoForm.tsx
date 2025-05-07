@@ -4,7 +4,6 @@ import React, { useState, FormEvent } from "react";
 import Form from "@/components/ui/Form";
 import FormField from "@/components/ui/FormField";
 import Input from "@/components/ui/Input";
-import RadioGroup from "@/components/ui/RadioGroup";
 import FileUpload from "@/components/ui/FileUpload";
 
 import { ParentInfo } from "@/interfaces/registration/registration";
@@ -33,12 +32,12 @@ export default function ParentInfoForm({initialData = {}, onChange, onPrevious, 
     onChange(updatedInfo)
   };
 
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    const updatedInfo = {...parentInfo, [name]: value}
-    setParentInfo(updatedInfo)
-    onChange(updatedInfo)
-  };
+  // const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  //   const { name, value } = e.target;
+  //   const updatedInfo = {...parentInfo, [name]: value}
+  //   setParentInfo(updatedInfo)
+  //   onChange(updatedInfo)
+  // };
 
  
   const handleFileChange = (name: string) => (file: File | null) => {

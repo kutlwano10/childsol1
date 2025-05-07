@@ -6,7 +6,7 @@ import FormField from "@/components/ui/FormField";
 import Input from "@/components/ui/Input";
 import RadioGroup from "@/components/ui/RadioGroup";
 import Checkbox from "@/components/ui/Checkbox";
-import FileUpload from "@/components/ui/FileUpload";
+
 import { ChildInfo } from "@/interfaces/registration/registration";
 import Button from "@/components/ui/Button";
 
@@ -57,7 +57,7 @@ export default function ChildInformationUpdate() {
   };
 
   const handleCheckboxChange = (
-    name: string,
+    name: keyof ChildInfo,
     value: string,
     isChecked: boolean
   ) => {
@@ -70,10 +70,6 @@ export default function ChildInformationUpdate() {
         : currentValues;
       return { ...prev, [name]: updatedValues };
     });
-  };
-
-  const handleFileChange = (name: string) => (file: File | null) => {
-    setChildInfo((prev) => ({ ...prev, [name]: file }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -187,9 +183,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="medicalConditions"
                 value={childInfo.medicalConditions || ""}
-                onChange={handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full"
-                rows={2}
                 placeholder="List any medical conditions"
               />
             </FormField>
@@ -201,9 +196,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="allergies"
                 value={childInfo.allergies || ""}
-                onChange={handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full rounded-lg"
-                rows={3}
                 placeholder="List any allergies"
               />
             </FormField>
@@ -212,9 +206,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="chronicConditions"
                 value={childInfo.chronicCondition || ""}
-                onChange={handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full "
-                rows={3}
                 placeholder="List any chronic conditions"
               />
             </FormField>

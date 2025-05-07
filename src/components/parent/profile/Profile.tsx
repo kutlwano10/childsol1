@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState } from "react";
 import Title from "@/components/ui/Title";
-import { ChildInfo } from "@/interfaces/registration/registration";
 import ChildInformationUpdate from "./ChildInformationUpdate";
 
 interface Menu {
@@ -10,15 +9,9 @@ interface Menu {
   id: string;
 }
 
-interface ChildInfoProps {
-  initialData?: Partial<ChildInfo>;
-  onChange: (data: Partial<ChildInfo>) => void;
-}
-
-
 const ParentsInformation = () => (
   <div>
-    <Title level={3}>Parent's Information</Title>
+    <Title level={3}>Parent&apos;s Information</Title>
     {/* Add parent information form fields here */}
   </div>
 );
@@ -32,7 +25,6 @@ const OtherInformation = () => (
 
 export default function Profile() {
   const [activeSection, setActiveSection] = useState("child");
-  const [childData, setChildData] = useState<Partial<ChildInfo>>({});
 
   const sidebarMenu: Menu[] = [
     { title: "Child Information", id: "child" },
@@ -40,15 +32,10 @@ export default function Profile() {
     { title: "Other Information", id: "other" },
   ];
 
-  const handleChange = (e: any) => {
-    e.preventDefault()
-    console.log("clicked");
-  };
-
   const renderActiveSection = () => {
     switch (activeSection) {
       case "child":
-        return <ChildInformationUpdate/>;
+        return <ChildInformationUpdate />;
       case "parents":
         return <ParentsInformation />;
       case "other":

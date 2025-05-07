@@ -26,7 +26,6 @@ export default function Form({
   subtitle,
   step,
   totalSteps,
-  stepDescription,
   showStepIndicator = false,
   showNavigation = false,
   nextButtonText = 'Next Step',

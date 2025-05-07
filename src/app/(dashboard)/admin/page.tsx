@@ -1,5 +1,4 @@
 
-import Title from "@/components/ui/Title";
 import React from "react";
 import AdminDashboard from "@/components/admin/dashboard/AdminDashboard";
 import ProtectedRoute from "@/components/ProtectedRoute";

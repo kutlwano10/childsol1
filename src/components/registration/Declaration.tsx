@@ -82,7 +82,7 @@ export default function Declaration({
             Agree to abide by and be contractually bound by the rules of
             ChildSol as per the prospectus, herein attached as Annexure A. I
             also accept that this declaration and general indemnity shall remain
-            in force for the full duration of my child's enrollment at ChildSol.
+            in force for the full duration of my child&apos;s enrollment at ChildSol.
           </li>
 
           <li>

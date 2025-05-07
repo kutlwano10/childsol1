@@ -5,7 +5,6 @@ import Title from "@/components/ui/Title";
 import Image from "next/image";
 import React from "react";
 
-Image;
 
 export default function ProductDetails() {
   return (

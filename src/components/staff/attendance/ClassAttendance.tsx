@@ -1,6 +1,6 @@
 // components/admin/attendance/ClassAttendance.tsx
 "use client";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+
 import Title from "@/components/ui/Title";
 import { Table, Column } from "@/components/ui/table/Table";
 
@@ -14,18 +14,13 @@ type AttendanceRecord = {
   contactNumber: string;
 };
 
-export default function ClassAttendance({ children }: any) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+interface ClassAttendanceProps {
+  children?: React.ReactNode
+}
 
-  const grade = searchParams.get("grade");
-  const classId = searchParams.get("class");
-
-  const handleBack = () => {
-    router.push(`${pathname}?view=classes&grade=${grade}`);
-  };
-
+export default function ClassAttendance({
+  children,
+}: Readonly<ClassAttendanceProps>) {
   // Sample data matching your image - 7 entries
   const attendanceData: AttendanceRecord[] = [
     {
@@ -147,7 +142,6 @@ export default function ClassAttendance({ children }: any) {
           </div>
           {children}
         </div>
-        
 
         <Table data={attendanceData} columns={columns} className="w-full" />
 

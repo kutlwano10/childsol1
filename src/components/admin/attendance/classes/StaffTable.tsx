@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Column } from '@/components/ui/table/Table'; // adjust path as needed
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+
 
 type ClassItem = {
   id: string;

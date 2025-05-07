@@ -2,7 +2,6 @@
 
 import React from "react";
 import GenderStats from "./GenderChart";
-import Title from "@/components/ui/Title";
 import GenderPieChart from "./GenderPieChart";
 
 
@@ -22,10 +21,7 @@ export default function GenderPage() {
           { age: "60-70", male: 120, female: 80 },
           { age: "70-80", male: 75, female: 25 },
         ]}
-        total={1500}
-        femaleCount={775}
-        maleCount={725}
-        ageGroups={["26-30", "40-60", "60-70"]}
+       
       />
         </div>
         {/* RIGHT */}

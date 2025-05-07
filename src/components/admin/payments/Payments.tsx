@@ -6,13 +6,9 @@ import Button from '@/components/ui/Button'
 import PaymentHistoryTable from './PaymentsHistoryTable'
 import PaymentChart from './PaymentChart'
 import PayrollSummaryChart from './PayrollSummaryChart'
-import { useRouter } from 'next/navigation'
-
-
-
 
 export default function Payments() {
-    const route = useRouter()
+   
   return (
     <div>
         <div className='flex items-center justify-between pb-12'>

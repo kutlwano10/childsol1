@@ -1,23 +1,22 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import React from "react";
 import {
   HomeIcon,
-  UserIcon,
+  // UserIcon,
   UsersIcon,
-  AcademicCapIcon,
+  // AcademicCapIcon,
   BookOpenIcon,
-  ClockIcon,
-  ClipboardDocumentIcon,
-  DocumentCheckIcon,
+  // ClockIcon,
+  // ClipboardDocumentIcon,
+  // DocumentCheckIcon,
   CalendarIcon,
-  BellAlertIcon,
+  // BellAlertIcon,
   ChatBubbleLeftRightIcon,
-  Cog6ToothIcon,
-  QuestionMarkCircleIcon,
+  // Cog6ToothIcon,
+  // QuestionMarkCircleIcon,
   ArrowLeftOnRectangleIcon,
-  UserCircleIcon,
+  // UserCircleIcon,
   ChartBarIcon,
   TicketIcon,
 } from "@heroicons/react/24/outline";
@@ -40,7 +39,6 @@ interface MenuGroup {
 }
 
 
-
 export default function Menu() {
   const { user, logout } = useAuth();
   const router = useRouter()
@@ -48,8 +46,6 @@ export default function Menu() {
   const handleLogout = () => {
     logout();
     router.push('/')
-
-     
   };
 
   if (!user) {
@@ -73,21 +69,6 @@ export default function Menu() {
           visible: ["admin", "staff", "parent", "super-admin"],
           dynamicPrefix: true,
         },
-        // {
-        //   icon: <UserIcon className="h-5 w-5" />,
-        //   label: "staffs",
-        //   href: "/staffs",
-        // },
-        // {
-        //   icon: <UsersIcon className="h-5 w-5" />,
-        //   label: "Parents",
-        //   href: "/parent",
-        // },
-        // {
-        //   icon: <AcademicCapIcon className="h-5 w-5" />,
-        //   label: "Admin",
-        //   href: "/admin",
-        // },
         {
           icon: <UsersIcon className="h-5 w-5" />,
           label: "Profiles",

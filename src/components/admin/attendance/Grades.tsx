@@ -2,9 +2,7 @@
 import React from "react";
 import GradeCard from "@/components/admin/student-profiles/SchoolCard";
 import Title from "@/components/ui/Title";
-import Link from "next/link";
-
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Grades() {
 

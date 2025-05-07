@@ -2,7 +2,6 @@
 
 import React from "react";
 import ClassGradeChart from "./ClassGradeChart";
-import Title from "@/components/ui/Title";
 import GenderPieChart from "./GenderPieChart";
 
 export default function ClassGradePage() {

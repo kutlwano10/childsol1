@@ -125,7 +125,7 @@ export default function HistoryTable() {
       render: (item: Invoice) => (
         <DownloadButton href={item.downloadUrl} />
       ),
-      align: 'right',
+      
     },
   ];
 

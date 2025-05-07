@@ -20,6 +20,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const { password: _, ...userWithoutPassword } = user;
-  return NextResponse.json(userWithoutPassword);
+  const {...userWithoutPassword} = user
+  return NextResponse.json( userWithoutPassword);
 }

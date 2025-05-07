@@ -3,9 +3,9 @@
 import Title from '@/components/ui/Title'
 import React from 'react'
 import AttendanceChart from './AttendanceChart'
-import AttendanceSummary from "./AttendanceSummary"
+
 import {AlertsCard, AlertItem, UpcomingEventsCard, EventItem} from "@/components/CardComponents"
-import WaitingListTable from "./WaitingListTable"
+
 import ClassAttendance from '@/components/staff/attendance/ClassAttendance'
 import Button from '@/components/ui/Button'
 
@@ -68,19 +68,19 @@ export default function StaffDashboard() {
     }
   ];
 
-  const attendanceData = {
-    date: "May 28, 2025",
-    checkInData: {
-      children: "50/23",
-      staff: "20/18",
-      payments: 3500
-    },
-    checkOutData: {
-      children: "50/23",
-      staff: "20/18",
-      payments: 15000
-    }
-  };
+  // const attendanceData = {
+  //   date: "May 28, 2025",
+  //   checkInData: {
+  //     children: "50/23",
+  //     staff: "20/18",
+  //     payments: 3500
+  //   },
+  //   checkOutData: {
+  //     children: "50/23",
+  //     staff: "20/18",
+  //     payments: 15000
+  //   }
+  // };
   return (
     <>
     <p className="py-4 text-gray-500">Welcome back , Carol</p>

@@ -56,6 +56,7 @@ export default function SignIn() {
     } catch (err) {
       setError("Invalid email or password");
       setIsLoading(false);
+      console.error(err)
     }
   };
   return (
@@ -157,10 +158,10 @@ export default function SignIn() {
 
           <div className="text-center ">
             <a
-              href="#"
+              href="/registration"
               className="text-[var(--color-secondary)] text-lg hover:underline"
             >
-              Don't have an account?
+              Don&apos;t have an account?
             </a>
           </div>
           <div className="w-full flex justify-center">
