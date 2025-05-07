@@ -1,0 +1,125 @@
+"use client";
+
+import React, { useState } from "react";
+
+import { AttendanceMealsCard } from "@/components/dashboard/AttendanceMealsCard";
+import { DailyReportCard } from "@/components/dashboard/DailyReportCard";
+import Title from "@/components/ui/Title";
+import CommentsCard from "@/components/parent/reports/CommentsCard";
+import ReportsHistory from "@/components/parent/reports/ReportHistory";
+import Button from "@/components/ui/Button";
+import Activities from "@/components/dashboard/Activities";
+import Assessments from "@/components/dashboard/Assessments";
+import ReportForm from "./ReportForm";
+
+const initialComments = [
+  {
+    id: "1",
+    author: {
+      name: "Mrs Lee",
+      avatar: "/Profile.png", // Replace with actual image path
+    },
+    content:
+      "Today, Ayanda had a wonderful day! They were full of energy and participated enthusiastically in all activities. They especially enjoyed [activity e.g., storytime or painting] and showed great focus. During playtime, they interacted well with their friends, sharing and taking turns. Overall, a happy and productive day!",
+    timestamp: "30m ago",
+  },
+  {
+    id: "2",
+    author: {
+      name: "Mrs Lee",
+      avatar: "/Profile.png", // Replace with actual image path
+    },
+    content:
+      "Today, Ayanda had a wonderful day! They were full of energy and participated enthusiastically in all activities. They especially enjoyed [activity e.g., storytime or painting] and showed great focus. During playtime, they interacted well with their friends, sharing and taking turns. Overall, a happy and productive day!",
+    timestamp: "30m ago",
+  },
+  {
+    id: "3",
+    author: {
+      name: "Evan",
+      avatar: "",
+    },
+    content:
+      "Thank you for the update! I'm so happy to hear that Ayanda had a great day and enjoyed the activities. We appreciate all the care and support from the teachers. Looking forward to another wonderful day tomorrow!",
+    timestamp: "2m ago",
+  },
+];
+
+export default function Report() {
+  const [comments, setComments] = useState(initialComments);
+  const [showModal , setShowModal] = useState(false)
+
+  const handleSendComment = (message: string) => {
+    const newComment = {
+      id: Date.now().toString(),
+      author: {
+        name: "You", // Replace with actual user name
+        avatar: "", // Replace with actual avatar URL or leave empty for initial
+      },
+      content: message,
+      timestamp: "Just now",
+    };
+
+    setComments([...comments, newComment]);
+  };
+
+  const reports = [
+    {
+      id: "1",
+      studentId: "3728903",
+      studentName: "Ayanda Ndlovu",
+      studentInitials: "AY",
+      date: "June 25, 2026",
+      behavior: "Well behaved",
+      checkIn: "08:00 AM",
+      checkOut: "05:00 PM",
+    },
+    {
+      id: "2",
+      studentId: "3728893",
+      studentName: "Ayanda Ndlovu",
+      studentInitials: "AY",
+      date: "June 25, 2026",
+      behavior: "Well behaved",
+      checkIn: "08:00 AM",
+      checkOut: "05:00 PM",
+    },
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 4; // Match the pagination shown in the image
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <ReportForm showModal={showModal} setShowModal={setShowModal} />
+      <div className="flex items-center justify-between">
+        <Title className="" level={2}>
+          Daily Report
+        </Title>
+        <Button onClick={()=> setShowModal(true)} type="button">Create Report</Button>
+      </div>
+      <div className="flex gap-8">
+        <div className="bg-white w-full rounded-3xl">
+          <DailyReportCard />
+          <AttendanceMealsCard />
+          <Activities />
+          <Assessments />
+        </div>
+        {/* <UpcomingEventsCard /> */}
+        <CommentsCard comments={comments} onSendComment={handleSendComment} />
+      </div>
+      <ReportsHistory
+        reports={reports}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
+    </div>
+  );
+}
