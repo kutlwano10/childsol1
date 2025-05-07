@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 import Title from "@/components/ui/Title";
 import Input from "@/components/ui/Input";
@@ -15,48 +15,50 @@ export default function SignIn() {
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [error, setError] = useState("");
-  const { login, user } = useAuth();
-  const [isLoading, setIsLoading] = useState(false)
+  const { login, user, isLoading } = useAuth();
+  const [isLogging, setIsLogging] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (user && !isLoading) {
+      switch (user.role) {
+        case "admin":
+          router.push("/admin");
+
+          break;
+        case "staff":
+          router.push("/staff");
+
+          break;
+        case "parent":
+          router.push("/parent");
+
+          break;
+        case "super-admin":
+          router.push("/super-admin");
+
+          break;
+        default:
+          router.push("/");
+      }
+    }
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true);
+    setIsLogging(true);
 
     try {
       // Await the login and get the returned user data
-      await login(email, password)
-      
+      await login(email, password);
+
       // Redirect based on role
-      if (user) {
-        switch (user.role) {
-          case "admin":
-            router.push("/admin");
-            router.refresh(); // Ensure the page updates
-            break;
-          case "staff":
-            router.push("/staff");
-            router.refresh();
-            break;
-          case "parent":
-            router.push("/parent");
-            router.refresh();
-            break;
-            case "super-admin":
-            router.push("/super-admin");
-            router.refresh();
-            break;
-          default:
-            router.push("/");
-            router.refresh();
-        }
-      }
     } catch (err) {
       setError("Invalid email or password");
-      setIsLoading(false);
-      console.error(err)
+      setIsLogging(false);
+      console.error(err);
     }
   };
   return (
@@ -143,9 +145,8 @@ export default function SignIn() {
                 fullWidth
                 size="lg"
                 className="mb-6 shadow-md"
-                
               >
-                {isLoading ? 'Signing in...' : 'Sign In'}
+                {isLogging ? "Signing in..." : "Sign In"}
               </Button>
             </div>
           </form>
@@ -165,7 +166,13 @@ export default function SignIn() {
             </a>
           </div>
           <div className="w-full flex justify-center">
-            <Image width={200} height={10} className="object-cover " src='/hisgroup1.png' alt=""/>
+            <Image
+              width={200}
+              height={10}
+              className="object-cover "
+              src="/hisgroup1.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
