@@ -46,7 +46,7 @@ export default function Button({
         ${sizeClasses[size] || sizeClasses.md}
         ${fullWidth ? 'w-[170px] h-[48px]' : ''}
         rounded-full transition-all duration-200
-        font-medium 
+        font-medium whitespace-nowrap
         flex items-center justify-center
         ${icon ? 'gap-2' : ''}
         ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}

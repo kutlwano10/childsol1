@@ -21,7 +21,7 @@ export default function Class() {
         <Title level={1}>{isClassesTab ? "2-6 Years" : "Staff"}</Title>
 
         {/* Toggle Buttons */}
-        <div className="bg-gray-200 gap-2 justify-center flex p-1 w-1/5 rounded-3xl">
+        <div className="bg-[#E6EDF5] gap-2 justify-center flex p-1  rounded-4xl">
           <Button
             fullWidth
             type="button"
