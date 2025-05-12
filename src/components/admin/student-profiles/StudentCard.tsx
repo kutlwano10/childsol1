@@ -1,5 +1,11 @@
-import React from 'react';
-import { MoreVertical } from 'lucide-react';
+import React from "react";
+import { MoreVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 interface StudentData {
   id?: string;
@@ -46,17 +52,26 @@ const StudentCard: React.FC<StudentCardProps> = ({
   showTeacherName = false,
   showClassRoom = false,
 }) => {
-  const { name, gender, age, school, parentNumber, isApproved = false } = student;
+  const {
+    name,
+    gender,
+    age,
+    school,
+    parentNumber,
+    isApproved = false,
+  } = student;
 
   // Extract initials for the avatar
   const initials = name
-    .split(' ')
+    .split(" ")
     .map((part) => part.charAt(0))
-    .join('')
+    .join("")
     .toUpperCase();
 
   return (
-    <div className={`flex rounded-2xl bg-white items-center justify-between py-6 px-2 border-b border-gray-100 ${className}`}>
+    <div
+      className={`flex rounded-2xl bg-white items-center justify-between py-6 px-2 border-b border-gray-100 ${className}`}
+    >
       {/* Left section - Avatar and name */}
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
@@ -121,14 +136,14 @@ const StudentCard: React.FC<StudentCardProps> = ({
               Full view
             </button>
 
-            {!isApproved && (
+            {/* {!isApproved && (
               <button
                 onClick={() => onApprove && onApprove(student)}
                 className="px-3 py-1 bg-yellow-400 text-white text-xs rounded-full"
               >
                 Approve
               </button>
-            )}
+            )} */}
 
             {isApproved && (
               <button
@@ -142,9 +157,28 @@ const StudentCard: React.FC<StudentCardProps> = ({
         )}
 
         {showOptions && (
-          <button className="ml-2 p-1 text-gray-500">
-            <MoreVertical size={20} />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="ml-2 p-1 text-gray-500">
+                <MoreVertical size={20} />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuItem onClick={() => onView?.(student)}>
+                View
+              </DropdownMenuItem>
+              {!isApproved && (
+                <DropdownMenuItem onClick={() => onApprove?.(student)}>
+                  Approve
+                </DropdownMenuItem>
+              )}
+              {isApproved && (
+                <DropdownMenuItem onClick={() => onArchive?.(student)}>
+                  Archive
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
         )}
       </div>
     </div>
@@ -152,4 +186,3 @@ const StudentCard: React.FC<StudentCardProps> = ({
 };
 
 export default StudentCard;
-

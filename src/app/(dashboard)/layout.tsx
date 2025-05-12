@@ -13,7 +13,7 @@ export default function DashboardLayout({
   return (
     <div className="flex p-4  md:p-8 min-h-screen">
       {/* Desktop Sidebar (hidden on mobile) */}
-      <div className="fixed space-y-6 pt-8 hidden rounded-2xl h-[calc(100vh-64px)] w-[240px] bg-[var(--color-primary)] text-white md:flex flex-col p-6 top-8 left-8">
+      <div className="fixed space-y-8 pt-8 hidden rounded-2xl h-[calc(100vh-64px)] w-[240px] bg-[var(--color-primary)] text-white md:flex flex-col p-6 top-8 left-8">
         <Link
           className="flex items-center justify-center lg:justify-start gap-2"
           href={"#"}

@@ -6,9 +6,31 @@ import DeregistrationReasons from "./DeregistrationReasons";
 import RegistrationPieChart from "./RegistractionPieChart";
 import DeregistrationsTable from "./DeregistrationTable";
 import { useSearchParams } from "next/navigation";
-
+import DeregistrationTable from "./all-campuses/DeregistrationTable";
+import DeregistrationReasonsChart from "./all-campuses/DeregistrationReason";
 
 const SCHOOL_DATA = {
+  "All Campuses": {
+    registrationData: [
+      { month: "Jan", registrations: 120, deregistrations: 80 },
+      { month: "Feb", registrations: 150, deregistrations: 90 },
+      { month: "Mar", registrations: 180, deregistrations: 70 },
+      { month: "Apr", registrations: 200, deregistrations: 60 },
+      { month: "May", registrations: 170, deregistrations: 50 },
+      { month: "Jun", registrations: 190, deregistrations: 80 },
+      { month: "Jul", registrations: 210, deregistrations: 90 },
+      { month: "Aug", registrations: 230, deregistrations: 100 },
+      // ... more data for Blue Hills
+    ],
+    deregistrationReasons: [
+      { reason: "Education", count: 300 },
+      { reason: "Service", count: 250 },
+      { reason: "Food", count: 200 },
+      { reason: "Graduates", count: 150 },
+      { reason: "Communi...", count: 100 },
+      { reason: "Saffey", count: 50 },
+    ],
+  },
   "Blue Hills Campus": {
     registrationData: [
       { month: "Jan", registrations: 120, deregistrations: 80 },
@@ -54,13 +76,23 @@ const SCHOOL_DATA = {
   },
 };
 
+const reasonsData = [
+  { reason: "Education", count: 55 },
+  { reason: "Service", count: 20 },
+  { reason: "Food", count: 10 },
+  { reason: "Graduates", count: 30 },
+  { reason: "Commun...", count: 50 },
+  { reason: "Saffey", count: 25 },
+  { reason: "Other", count: 15 },
+];
+
 export default function RegistrationsPage() {
+  const searchParams = useSearchParams();
+  const currentSchool = searchParams.get("school") || "All Campuses";
 
-  const searchParams = useSearchParams()
-  const currentSchool = searchParams.get("school") || "Blue Hills Campus"
-
-  const schoolData = SCHOOL_DATA[currentSchool as keyof typeof SCHOOL_DATA] || SCHOOL_DATA["Blue Hills Campus"]
- 
+  const schoolData =
+    SCHOOL_DATA[currentSchool as keyof typeof SCHOOL_DATA] ||
+    SCHOOL_DATA["All Campuses"];
 
   return (
     <>
@@ -80,11 +112,13 @@ export default function RegistrationsPage() {
         <div className=" flex gap-12 flex-col md:flex-row">
           {/* LEFT */}
           <div className="w-full space-y-12 lg:w-2/2">
-            <DeregistrationReasons data={schoolData.deregistrationReasons} />
+            {currentSchool === 'All Campuses'?<DeregistrationTable />
+            :(<DeregistrationReasons data={schoolData.deregistrationReasons} />)}
           </div>
           {/* RIGHT */}
-          <div className="w-full lg:w-1/3">
-            <DeregistrationsTable
+          <div className="w-full h-full lg:w-1/3">
+          { currentSchool === 'All Campuses'? <DeregistrationReasonsChart data={reasonsData}/>
+            :(<DeregistrationsTable
               totalRegistrations={9700}
               deregistrationData={{
                 education: 40,
@@ -95,7 +129,7 @@ export default function RegistrationsPage() {
                 safety: 40,
                 other: 40,
               }}
-            />
+            />)}
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const DeregistrationsTable: React.FC<DeregistrationsTableProps> = ({
   }
 }) => {
   return (
-    <div className="bg-white h-full p-4 rounded-4xl shadow ">
+    <div className="bg-white min-h-full p-4 rounded-4xl shadow ">
       <h1 className="text-lg font-semibold mb-2">Degistrations</h1>
       <p className="text-sm text-gray-600 mb-4">Total number of registration: {totalRegistrations}</p>
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Table, Column } from '@/components/ui/table/Table'; // adjust path as needed
+import Button from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
+import Title from '@/components/ui/Title';
 
 type ClassItem = {
   id: string;
@@ -11,16 +14,16 @@ type ClassItem = {
 };
 
 const classData: ClassItem[] = [
-  { id: '1', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'Select' },
-  { id: '2', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
-  { id: '3', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
-  { id: '4', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
-  { id: '5', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
-  { id: '6', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
-  { id: '7', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
+  { id: '1', staffName: 'Mrs Leea', className: 'CA', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
+  { id: '2', staffName: 'Mrs Karabo', className: 'CB', school: 'Blue Hills', numberOfStudents: 35, actionLabel: 'View' },
+  
 ];
 
-const columns: Column<ClassItem>[] = [
+
+
+const ClassTable: React.FC = () => {
+  const router = useRouter()
+  const columns: Column<ClassItem>[] = [
   {
     key: 'staffName',
     header: 'Name of Staff',
@@ -41,18 +44,17 @@ const columns: Column<ClassItem>[] = [
     key: 'action',
     header: '',
     render: (item) => (
-      <button className="bg-yellow-400 text-white px-4 py-1.5 rounded-full text-sm font-medium hover:opacity-90">
+      <Button onClick={()=> router.push('/admin/student-profiles/classes/class')} className="">
         {item.actionLabel}
-      </button>
+      </Button>
     ),
     align: 'right',
+  
   },
 ];
-
-const ClassTable: React.FC = () => {
   return (
     <div className="p-4 bg-white rounded-2xl shadow-md">
-      <h2 className="text-lg font-semibold mb-4 px-2">Class</h2>
+      <Title level={6} className="">Class</Title>
       <Table data={classData} columns={columns} />
     </div>
   );

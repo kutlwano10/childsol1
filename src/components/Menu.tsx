@@ -3,20 +3,11 @@ import Link from "next/link";
 import React from "react";
 import {
   HomeIcon,
-  // UserIcon,
   UsersIcon,
-  // AcademicCapIcon,
   BookOpenIcon,
-  // ClockIcon,
-  // ClipboardDocumentIcon,
-  // DocumentCheckIcon,
   CalendarIcon,
-  // BellAlertIcon,
   ChatBubbleLeftRightIcon,
-  // Cog6ToothIcon,
-  // QuestionMarkCircleIcon,
   ArrowLeftOnRectangleIcon,
-  // UserCircleIcon,
   ChartBarIcon,
   TicketIcon,
 } from "@heroicons/react/24/outline";
@@ -38,14 +29,13 @@ interface MenuGroup {
   items: MenuItem[];
 }
 
-
 export default function Menu() {
   const { user, logout } = useAuth();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogout = () => {
     logout();
-    router.push('/')
+    router.push("/");
   };
 
   if (!user) {
@@ -66,14 +56,17 @@ export default function Menu() {
         {
           icon: <HomeIcon className="h-5 w-5" />,
           label: "Dashboard",
+          onClick() {
+            router.push(`/${user.role}`)
+          },
           visible: ["admin", "staff", "parent", "super-admin"],
           dynamicPrefix: true,
         },
         {
           icon: <UsersIcon className="h-5 w-5" />,
-          label: "Profiles",
+          label: "Manage Erollments",
           href: "student-profiles",
-          visible: ["admin", "super-admin"],
+          visible: ["admin"],
           dynamicPrefix: true,
         },
         {
@@ -87,29 +80,14 @@ export default function Menu() {
           icon: <BookOpenIcon className="h-5 w-5" />,
           label: "Payments",
           href: "payments",
-          visible: ["admin", "staff", "super-admin"],
+          visible: ["admin", "staff"],
           dynamicPrefix: true,
         },
-        // {
-        //   icon: <ClockIcon className="h-5 w-5" />,
-        //   label: "Timetable",
-        //   href: '/timetable',
-        // },
-        // {
-        //   icon: <ClipboardDocumentIcon className="h-5 w-5" />,
-        //   label: "Exams",
-        //   href: '/exams',
-        // },
-        // {
-        //   icon: <DocumentCheckIcon className="h-5 w-5" />,
-        //   label: "Assignments",
-        //   href: '/assignments',
-        // },
         {
           icon: <TicketIcon className="h-5 w-5" />,
           label: "Attendance",
           href: "attendance",
-          visible: ["admin", "staff", "parent", "super-admin"],
+          visible: ["admin", "staff", "parent"],
           dynamicPrefix: true,
         },
       ],
@@ -121,33 +99,28 @@ export default function Menu() {
           icon: <CalendarIcon className="h-5 w-5" />,
           label: "Events",
           href: "events",
-          visible: ["admin", "staff", "parent", "super-admin"],
+          visible: ["admin", "staff", "parent"],
           dynamicPrefix: true,
         },
-        // {
-        //   icon: <BellAlertIcon className="h-5 w-5" />,
-        //   label: "Announcements",
-        //   href: '/announcements',
-        // },
         {
           icon: <ChatBubbleLeftRightIcon className="h-5 w-5" />,
           label: "Communication",
           href: "messages",
-          visible: ["admin", "staff", "parent", "super-admin"],
+          visible: ["admin", "staff", "parent"],
           dynamicPrefix: true,
         },
         {
           icon: <ChartBarIcon className="h-5 w-5" />,
           label: "Daily Reports",
           href: "reports",
-          visible: ["staff", "parent", "super-admin"],
+          visible: ["staff", "parent"],
           dynamicPrefix: true,
         },
         {
           icon: <ShoppingBagIcon className="h-5 w-5" />,
           label: "Store",
           href: "store",
-          visible: ["admin", "staff", "parent", "super-admin"],
+          visible: ["admin", "staff", "parent"],
           dynamicPrefix: true,
         },
         {
@@ -162,29 +135,11 @@ export default function Menu() {
     {
       title: "ACCOUNT",
       items: [
-        // {
-        //   icon: <UserCircleIcon className="h-5 w-5" />,
-        //   label: "profile",
-        //   href: "profile",
-        //   visible: ['admin',"staff", "parent", "super-admin"],
-        //   dynamicPrefix: true,
-        // },
-        // {
-        //   icon: <Cog6ToothIcon className="h-5 w-5" />,
-        //   label: "Settings",
-        //   href: "/settings",
-        // },
-        // {
-        //   icon: <QuestionMarkCircleIcon className="h-5 w-5" />,
-        //   label: "Help",
-        //   href: "/help",
-        // },
         {
           icon: <ArrowLeftOnRectangleIcon className="h-5 w-5" />,
           label: "Logout",
           onClick: handleLogout,
           visible: ["admin", "staff", "parent", "super-admin"],
-          
         },
       ],
     },
@@ -194,9 +149,6 @@ export default function Menu() {
     <div className="mt-4 text-base">
       {menuItems.map((group) => (
         <div className="flex flex-col gap-2 text-white" key={group.title}>
-          {/* <h3 className="text-sm font-semibold uppercase text-gray-400 px-2">
-            {group.title}
-          </h3> */}
           <div className="flex flex-col gap-1">
             {group.items
               .filter((item) => {
@@ -208,12 +160,18 @@ export default function Menu() {
                   key={item.label}
                   onClick={item.onClick}
                   className={`flex items-center rounded-xl hover:bg-white justify-start gap-4 text-white hover:text-secondary px-2 py-2 ${
-                    item.onClick ? 'cursor-pointer' : ''
+                    item.onClick ? "cursor-pointer" : ""
                   }`}
                 >
                   <span className="w-5">{item.icon}</span>
                   {item.href ? (
-                    <Link href={item.dynamicPrefix ? `/${user.role}/${item.href}` : `/${item.href}`}>
+                    <Link
+                      href={
+                        item.dynamicPrefix
+                          ? `/${user.role}/${item.href}`
+                          : `/${item.href}`
+                      }
+                    >
                       {item.label}
                     </Link>
                   ) : (

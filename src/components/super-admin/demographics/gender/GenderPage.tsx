@@ -3,11 +3,14 @@
 import React from "react";
 import GenderStats from "./GenderChart";
 import GenderPieChart from "./GenderPieChart";
+import AgeGroupTable from "./all-campus/AgeGroupTable";
+import CampusGenderStatsTable from "./all-campus/CampusGenderStatsTable";
 
 
 export default function GenderPage() {
+
   return (
-    <div className="">
+    <div className="space-y-8">
       
       <div className=" flex h-full gap-12 flex-col md:flex-row">
         {/* LEFT */}
@@ -27,6 +30,17 @@ export default function GenderPage() {
         {/* RIGHT */}
         <div className="w-full lg:w-1/3">
           <GenderPieChart />
+        </div>
+      </div>
+      <div className=" flex h-full gap-12 flex-col md:flex-row">
+        {/* LEFT */}
+
+        <div className="w-full  lg:w-2/2">
+        <AgeGroupTable />
+        </div>
+        {/* RIGHT */}
+        <div className="w-full lg:w-1/3">
+          <CampusGenderStatsTable />
         </div>
       </div>
     </div>
