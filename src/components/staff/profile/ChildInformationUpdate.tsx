@@ -7,7 +7,7 @@ import Input from "@/components/ui/Input";
 import RadioGroup from "@/components/ui/RadioGroup";
 import Checkbox from "@/components/ui/Checkbox";
 import { ChildInfo } from "@/interfaces/registration/registration";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 export default function ChildInformationUpdate() {
   // Initialize with empty data
@@ -182,9 +182,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="medicalConditions"
                 value={childInfo.medicalConditions || ""}
-                onChange={()=>handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full"
-                
                 placeholder="List any medical conditions"
               />
             </FormField>
@@ -196,9 +195,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="allergies"
                 value={childInfo.allergies || ""}
-                onChange={()=>handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full rounded-lg"
-              
                 placeholder="List any allergies"
               />
             </FormField>
@@ -207,9 +205,8 @@ export default function ChildInformationUpdate() {
               <Input
                 name="chronicConditions"
                 value={childInfo.chronicCondition || ""}
-                onChange={()=>handleTextAreaChange}
+                onChange={() => handleTextAreaChange}
                 className="w-full "
-              
                 placeholder="List any chronic conditions"
               />
             </FormField>

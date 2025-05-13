@@ -5,7 +5,7 @@ import Image from "next/image";
 import Title from "@/components/ui/Title";
 import Input from "@/components/ui/Input";
 import PasswordInput from "@/components/ui/PasswordInput";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import Checkbox from "@/components/ui/Checkbox";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";

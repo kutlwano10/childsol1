@@ -2,7 +2,7 @@
 import React from "react";
 import EventCard from "./EventsCard";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import { useRouter, useSearchParams } from "next/navigation";
 import EventCalender from "./EventCalender";
 

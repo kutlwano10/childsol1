@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ClassAttendance from "./ClassAttendance";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import StaffAttendance from "./StaffAttendance";
 
 export default function Attendance() {
@@ -14,7 +14,6 @@ export default function Attendance() {
         <Title level={2}>Attendance</Title>
         <div className="bg-[#E6EDF5] gap-4 justify-center flex p-1  rounded-4xl">
           <Button
-          
             fullWidth
             type="button"
             variant={isClassesTab ? "primary" : "text"}
@@ -32,9 +31,11 @@ export default function Attendance() {
             Staff
           </Button>
         </div>
-        <Button fullWidth variant="text">Back</Button>
+        <Button fullWidth variant="text">
+          Back
+        </Button>
       </div>
-      {isClassesTab ? <ClassAttendance /> : <StaffAttendance/>}
+      {isClassesTab ? <ClassAttendance /> : <StaffAttendance />}
     </div>
   );
 }

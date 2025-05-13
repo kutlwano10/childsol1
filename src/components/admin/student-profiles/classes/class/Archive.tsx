@@ -3,7 +3,7 @@
 import React from "react";
 import StudentCard from "../../StudentCard";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 export default function Archive() {
   const students = [
@@ -48,10 +48,10 @@ export default function Archive() {
   ];
   return (
     <div className="space-y-8">
-        <div className="flex items-center justify-between"> 
-            <Title level={2}>Archived</Title>
-            <Button variant="text">Back</Button>
-        </div>
+      <div className="flex items-center justify-between">
+        <Title level={2}>Archived</Title>
+        <Button variant="text">Back</Button>
+      </div>
       <div className="space-y-4">
         {students.map((student) => (
           <StudentCard

@@ -105,7 +105,7 @@ export default function Menu() {
         {
           icon: <ChatBubbleLeftRightIcon className="h-5 w-5" />,
           label: "Communication",
-          href: "messages",
+          href: "communication",
           visible: ["admin", "staff", "parent"],
           dynamicPrefix: true,
         },

@@ -1,8 +1,11 @@
 "use client";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import Title from "@/components/ui/Title";
-import React from "react";
+import React, { useState } from "react";
 import EventsCard from "./EventsCard";
+import { useRouter, useSearchParams } from "next/navigation";
+import EventCalender from "@/components/parent/events/EventCalender";
+import AddEventModal from "./AddEventModal";
 
 export default function Events() {
   const handleEdit = (id: string) => {
@@ -13,15 +16,47 @@ export default function Events() {
     console.log(`Deleting event with id: ${id}`);
   };
 
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const view = searchParams.get("view");
+
+  const handleViewCalendar = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("view", "calendar");
+    router.push(`?${params.toString()}`);
+  };
+
+  const handleBack = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("view");
+    router.push(`?${params.toString()}`);
+  };
+
+  if (view === "calendar") {
+    return (
+      <div>
+        <div className="flex justify-between pb-8">
+          <Title level={2}>Calendar View</Title>
+          <Button variant="text" onClick={handleBack} size="md" type="button">
+            Back to Events
+          </Button>
+        </div>
+        <EventCalender />
+      </div>
+    );
+  }
+
   return (
     <div className="py-4">
+      <AddEventModal showModal={showModal} setShowModal={setShowModal} />
       <div className="flex pb-12 justify-between">
         <Title level={2}>Upcoming Events</Title>
         <div className="flex gap-4">
-          <Button fullWidth type="button">
+          <Button onClick={handleViewCalendar} fullWidth type="button">
             View Calender
           </Button>
-          <Button fullWidth type="button">
+          <Button onClick={() => setShowModal(true)} fullWidth type="button">
             + Add Event
           </Button>
         </div>

@@ -1,10 +1,9 @@
 "use client";
 
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import Title from "@/components/ui/Title";
 import Image from "next/image";
 import React from "react";
-
 
 export default function ProductDetails() {
   return (

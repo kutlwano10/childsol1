@@ -8,7 +8,7 @@ import RadioGroup from "@/components/ui/RadioGroup";
 import Checkbox from "@/components/ui/Checkbox";
 
 import { ChildInfo } from "@/interfaces/registration/registration";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 export default function ChildInformationUpdate() {
   // Initialize with empty data

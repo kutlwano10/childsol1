@@ -3,15 +3,17 @@
 import React, { useState } from "react";
 import StudentList from "./StudentList";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
-import { Archive} from "lucide-react";
+import Button from "@/components/ui/ButtonUi";
+import { Archive } from "lucide-react";
 import CreateProfileForm from "../CreateProfileForm";
 import { useRouter } from "next/navigation";
 
 export default function ClassRoom() {
-  const [activeTab, setActiveTab] = useState<"students" | "waitingList">('students');
-  const [showModal, setShowModal] = useState(false)
-  const router = useRouter()
+  const [activeTab, setActiveTab] = useState<"students" | "waitingList">(
+    "students"
+  );
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
 
   const isClassTab = activeTab === "students";
   return (
@@ -40,11 +42,23 @@ export default function ClassRoom() {
           </Button>
         </div>
         <div className="flex justify-between gap-4">
-          <Button onClick={()=> router.push('/admin/student-profiles/classes/archived')} size="md"  className="" type="button" variant="primary">
+          <Button
+            onClick={() =>
+              router.push("/admin/student-profiles/classes/archived")
+            }
+            size="md"
+            className=""
+            type="button"
+            variant="primary"
+          >
             <Archive />
           </Button>
 
-          <Button onClick={() => setShowModal(true)}  type="button" variant="primary">
+          <Button
+            onClick={() => setShowModal(true)}
+            type="button"
+            variant="primary"
+          >
             Create Profile
           </Button>
         </div>

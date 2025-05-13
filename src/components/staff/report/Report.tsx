@@ -7,10 +7,11 @@ import { DailyReportCard } from "@/components/dashboard/DailyReportCard";
 import Title from "@/components/ui/Title";
 import CommentsCard from "@/components/parent/reports/CommentsCard";
 import ReportsHistory from "@/components/parent/reports/ReportHistory";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 import Activities from "@/components/dashboard/Activities";
 import Assessments from "@/components/dashboard/Assessments";
 import ReportForm from "./ReportForm";
+import BackButton from "@/components/ui/BackButton";
 
 const initialComments = [
   {
@@ -45,9 +46,11 @@ const initialComments = [
   },
 ];
 
+
+
 export default function Report() {
   const [comments, setComments] = useState(initialComments);
-  const [showModal , setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   const handleSendComment = (message: string) => {
     const newComment = {
@@ -102,7 +105,12 @@ export default function Report() {
         <Title className="" level={2}>
           Daily Report
         </Title>
-        <Button onClick={()=> setShowModal(true)} type="button">Create Report</Button>
+        <div className="flex items-center">
+          <BackButton />
+          <Button onClick={() => setShowModal(true)} type="button">
+            Create Report
+          </Button>
+        </div>
       </div>
       <div className="flex gap-8">
         <div className="bg-white w-full rounded-3xl">

@@ -1,22 +1,42 @@
 "use client";
 
 import React, { useState } from "react";
-import ClassTable from "./ClassTable";
-import StaffTable from "./StaffTable";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
-import { ShoppingBag } from "lucide-react";
+import Button from "@/components/ui/ButtonUi";
+import ClassAttendance from "../ClassAttendance";
+import TeacherProfile from "../TeacherProfile";
+import AttendanceChart from "../AttendanceChart";
+import AttendanceStats from "../AttendanceStats";
+import StaffAttendance from "@/components/staff/attendance/StaffAttendance";
+import BackButton from "@/components/ui/BackButton";
+
 
 export default function Class() {
-  const [activeTab, setActiveTab] = useState<"classes" | "staff">(
-    "classes"
-  );
+  const [activeTab, setActiveTab] = useState<"students" | "staff">("students");
 
-  const isClassesTab = activeTab === "classes";
+  const isClassesTab = activeTab === "students";
+
+  const attendanceData = [
+  { day: 'Monday', present: 20, absent: 5 },
+  { day: 'Tuesday', present: 19, absent: 6 },
+  { day: 'Wednesday', present: 22, absent: 3 },
+  { day: 'Thursday', present: 18, absent: 7 },
+  { day: 'Friday', present: 15, absent: 10 },
+];
+
+const trendData = [
+  { date: 'Mon', value: 80 },
+  { date: 'Tue', value: 76 },
+  { date: 'Wed', value: 88 },
+  { date: 'Thu', value: 72 },
+  { date: 'Fri', value: 60 },
+  { date: 'Sat', value: 65 },
+  { date: 'Sun', value: 70 },
+];
 
   return (
-    <div>
-      <div className="flex py-8 justify-between items-center">
+    <div className="space-y-8">
+      <div className="flex  justify-between items-center">
         {/* Dynamic Title */}
         <Title level={1}>{isClassesTab ? "2-6 Years" : "Staff"}</Title>
 
@@ -26,9 +46,9 @@ export default function Class() {
             fullWidth
             type="button"
             variant={isClassesTab ? "primary" : "text"}
-            onClick={() => setActiveTab("classes")}
+            onClick={() => setActiveTab("students")}
           >
-            Classes
+            Students
           </Button>
 
           <Button
@@ -44,26 +64,47 @@ export default function Class() {
         {/* Action Buttons */}
         <div className="flex gap-2">
           {isClassesTab ? (
-            <Button type="button" variant="text">
-              Back
-            </Button>
+            <BackButton/>
+             
           ) : (
             <>
               <div className="flex gap-2">
-                  <Button className="" type="button" variant="primary">
-                    <ShoppingBag />
-                  </Button>
-                  <Button type="button" variant="primary">
-                    Create Profile
-                  </Button>
+                
+                <Button type="button" variant="primary">
+                  Create Profile
+                </Button>
               </div>
             </>
           )}
         </div>
       </div>
 
+      <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <TeacherProfile 
+            name="Mrs Lee Jane" 
+            role="Class Teacher" 
+            initial="LJ" 
+            learnerCount={40} 
+          />
+        </div>
+        <div>
+          <AttendanceStats 
+            present={23} 
+            absent={2} 
+            weeklyChange="+12%" 
+            trendData={trendData}
+          />
+        </div>
+        <div>
+          <AttendanceChart attendanceData={attendanceData} />
+        </div>
+      </div>
+    </div>
+
       {/* Render based on active tab */}
-      {isClassesTab ? <ClassTable /> : <StaffTable />}
+      {isClassesTab ? <ClassAttendance /> : <StaffAttendance />}
     </div>
   );
 }

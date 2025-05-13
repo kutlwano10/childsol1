@@ -51,9 +51,7 @@ export default function StudentList() {
           key={student.id}
           student={student}
           teacherName={teacherName}
-          classRoomNumber={student.class}
-          showClassRoom={true}
-          showTeacherName={true}
+          classRoomNumber={student.class}        
           showSchool={false}
           showParentNumber={false}
           

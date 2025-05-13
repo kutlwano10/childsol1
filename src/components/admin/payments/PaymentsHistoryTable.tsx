@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Table, Column } from "@/components/ui/table/Table";
 import { Pagination } from "@/components/ui/table/Pagination";
 import { DownloadButton } from "@/components/ui/table/DownloadButton";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 // Define the Payment interface
 interface Payment {
@@ -18,8 +18,7 @@ interface Payment {
 const PaymentHistoryTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [paymentsPerPage] = useState(7);
-  const [activeTab, setActiveTab] = useState<'paid' | 'unpaid'>('paid')
-
+  const [activeTab, setActiveTab] = useState<"paid" | "unpaid">("paid");
 
   // Sample data based on the image
   const allPayments: Payment[] = [
@@ -88,9 +87,11 @@ const PaymentHistoryTable: React.FC = () => {
     },
   ];
 
-  const filteredPayments = allPayments.filter(payment=> {
-   return activeTab === 'paid' ? payment.status === 'Paid' : payment.status === 'Unpaid'
-  })
+  const filteredPayments = allPayments.filter((payment) => {
+    return activeTab === "paid"
+      ? payment.status === "Paid"
+      : payment.status === "Unpaid";
+  });
 
   // Get current payments
   const indexOfLastPayment = currentPage * paymentsPerPage;
@@ -187,7 +188,7 @@ const PaymentHistoryTable: React.FC = () => {
     setCurrentPage(page);
   };
 
-  const isPaymentTab = activeTab === 'paid'
+  const isPaymentTab = activeTab === "paid";
 
   return (
     <div className="bg-white rounded-lg shadow p-6">
@@ -216,7 +217,7 @@ const PaymentHistoryTable: React.FC = () => {
             variant={!isPaymentTab ? "primary" : "text"}
             onClick={() => setActiveTab("unpaid")}
           >
-           Unpaid
+            Unpaid
           </Button>
         </div>
       </div>

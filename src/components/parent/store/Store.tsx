@@ -3,7 +3,7 @@
 import React from "react";
 import ProductList from "./ProductList";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 export default function Store() {
   return (

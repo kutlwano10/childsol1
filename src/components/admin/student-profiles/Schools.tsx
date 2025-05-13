@@ -7,7 +7,7 @@ import Link from 'next/link'
 export default function Schools() {
   return (
     <>
-    <Title className='pb-8' level={2}>Grade Levels </Title>
+    <Title className='pb-8' level={2}>Classes</Title>
         <div className="flex p-8 rounded-2xl flex-wrap h-[100vh] bg-white  mx-auto  gap-12">
           <Link href={'/admin/student-profiles/classes'}>
             <SchoolCard

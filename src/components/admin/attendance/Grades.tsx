@@ -16,7 +16,7 @@ export default function Grades() {
   return (
     <>
       <Title className="pb-8" level={2}>
-        Grades
+        Classes
       </Title>
       <div className="flex p-8 rounded-2xl flex-wrap h-[100vh] bg-white  mx-auto  gap-12">
         <div onClick={() => handleGradeSelect("blue-hills-2-6")}>

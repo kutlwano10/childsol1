@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/ButtonUi";
 
 interface Product {
   id: string;
