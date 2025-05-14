@@ -13,7 +13,7 @@ export default function RegistrationRootLayout({
 
   const pathname = usePathname()
 
-  const isSuccessPage = pathname?.includes('/registration/success')
+  const isSuccessPage = pathname?.includes('/registration/track')
   return (
     <div className="flex p-8 min-h-screen ">
       {/* Sidebar is fixed */}

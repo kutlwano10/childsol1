@@ -5,6 +5,7 @@ import ParentInfoForm from "./ParentInfoForm";
 import Declaration from "./Declaration";
 import NextOfKinInfo from "./NextOfKinInfo";
 import Conditions from "./Conditions";
+import RegistrationCompletePage from "./RegistrationCompletePage";
 
 
 export default function MultiStepForm() {
@@ -80,14 +81,7 @@ export default function MultiStepForm() {
 
       default:
         return (
-          <ChildInformationForm
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, childInfo: data }))
-            }
-            onPrevious={prevStep}
-            onNext={nextStep}
-          />
+          <RegistrationCompletePage/>
         );
     }
   };

@@ -77,9 +77,6 @@ export default function AttendanceCheck({
           </Title>
           <p className="text-gray-600 text-sm mt-1">Current time: {time}</p>
         </div>
-        <Button variant="text" size="sm" type="button">
-          Check-in Guardian
-        </Button>
       </div>
 
       <div className={`${colors.bg} border ${colors.border} rounded-2xl p-4`}>

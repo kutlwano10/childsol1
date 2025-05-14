@@ -2,14 +2,14 @@
 
 import React, { useState } from "react";
 
-import { AttendanceMealsCard } from "@/components/dashboard/AttendanceMealsCard";
-import { DailyReportCard } from "@/components/dashboard/DailyReportCard";
+import { AttendanceMealsCard } from "@/components/parent/dashboard/AttendanceMealsCard";
+import { DailyReportCard } from "@/components/parent/dashboard/DailyReportCard";
 import Title from "@/components/ui/Title";
 import CommentsCard from "@/components/parent/reports/CommentsCard";
 import ReportsHistory from "@/components/parent/reports/ReportHistory";
 import Button from "@/components/ui/ButtonUi";
-import Activities from "@/components/dashboard/Activities";
-import Assessments from "@/components/dashboard/Assessments";
+import Activities from "@/components/parent/dashboard/Activities";
+import Assessments from "@/components/parent/dashboard/Assessments";
 import ReportForm from "./ReportForm";
 import BackButton from "@/components/ui/BackButton";
 
@@ -45,8 +45,6 @@ const initialComments = [
     timestamp: "2m ago",
   },
 ];
-
-
 
 export default function Report() {
   const [comments, setComments] = useState(initialComments);

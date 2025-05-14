@@ -6,7 +6,7 @@ export function AlertsCard() {
     ];
   
     return (
-      <div className="bg-white  rounded-3xl shadow-sm p-6">
+      <div className="bg-white h-full rounded-3xl shadow-sm p-6">
         <h3 className="text-lg font-semibold mb-4">Alerts</h3>
         <div className="space-y-4">
           {alerts.map((alert) => (

@@ -43,20 +43,6 @@ export function AttendanceMealsCard() {
     return (
       <div className=" p-6 w-full ">
         <div className="">
-          {/* Attendance Info */}
-          {/* <div>
-            <h3 className="text-lg font-semibold mb-4">Attendance Details</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-gray-500">Check in</p>
-                <p className="font-medium">8:00 AM</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500">Check out</p>
-                <p className="font-medium">5:00 PM</p>
-              </div>
-            </div>
-          </div> */}
   
           {/* Meals Info */}
           <div>
@@ -68,7 +54,6 @@ export function AttendanceMealsCard() {
                     <th className="py-2 pr-4">Meal Type</th>
                     <th className="py-2 pr-4">Time</th>
                     <th className="py-2 pr-4">Menu</th>
-                    <th className="py-2">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,11 +62,6 @@ export function AttendanceMealsCard() {
                       <td className="py-3 pr-4">{meal.type}</td>
                       <td className="py-3 pr-4">{meal.time}</td>
                       <td className="py-3 pr-4 text-gray-700">{meal.menu}</td>
-                      <td className="py-3">
-                        <span className={getStatusBadge(meal.status)}>
-                          {meal.status}
-                        </span>
-                      </td>
                     </tr>
                   ))}
                 </tbody>

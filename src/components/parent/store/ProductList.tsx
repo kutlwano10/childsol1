@@ -11,7 +11,7 @@ const productData = [
 
 const ProductList: React.FC = () => {
   return (
-    <div className="grid bg-white rounded-3xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4">
+    <div className="grid bg-white h-screen rounded-4xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4">
       {productData.map((product, index) => (
         <ProductCard
           key={index}

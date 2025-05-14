@@ -1,9 +1,13 @@
+'use client'
+
 import React from "react";
 import Image from "next/image";
 import Title from "@/components/ui/Title";
 import Button from "@/components/ui/ButtonUi";
+import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function RegistrationCompletePage() {
+    const router = useRouter()
   return (
     <div className="w-full h-full gap-4 flex flex-col justify-center items-center">
       <div className="">
@@ -16,11 +20,12 @@ export default function page() {
         />
       </div>
       <Title className="max-w-xl text-center" level={5}>
-        Your Child has been successfully registered. You will receive further
-        information regarding the next steps .
+        Your child&apos;s application has been successfully submitted. You will
+        receive updates on the next steps shortly. You can now track the status
+        of the application by clicking <strong>"Track Application"</strong>.
       </Title>
-      <Button variant="primary" fullWidth size="lg" className="mb-6 shadow-md">
-        Sign In
+      <Button onClick={()=> router.push('/registration/track')} variant="primary" fullWidth size="lg" className="mb-6 shadow-md">
+        Track Application
       </Button>
     </div>
   );

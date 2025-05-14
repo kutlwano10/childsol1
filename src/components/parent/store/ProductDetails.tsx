@@ -1,5 +1,6 @@
 "use client";
 
+import BackButton from "@/components/ui/BackButton";
 import Button from "@/components/ui/ButtonUi";
 import Title from "@/components/ui/Title";
 import Image from "next/image";
@@ -10,7 +11,7 @@ export default function ProductDetails() {
     <div className="space-y-10">
       <div className="flex items-center justify-between">
         <Title level={2}>Store</Title>
-        <Button variant="text">Back</Button>
+        <BackButton />
       </div>
       <div className="flex w-full min-h-[80vh] gap-12 justify-center mx-auto items-center  rounded-3xl flex-row p-4 bg-white ">
         {/* Product Image */}

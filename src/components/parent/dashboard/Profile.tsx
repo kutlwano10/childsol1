@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import FormField from '../ui/FormField';
-import Input from '../ui/Input';
-import Image from 'next/image';
-import { CameraIcon } from '@heroicons/react/24/solid';
-
+import React from "react";
+import FormField from "../../ui/FormField";
+import Input from "../../ui/Input";
+import Image from "next/image";
+import { CameraIcon } from "@heroicons/react/24/solid";
 
 export default function Profile() {
   return (
@@ -33,7 +32,7 @@ export default function Profile() {
               className="object-cover rounded-full"
             />
             <button className="absolute  z-40 bottom-0 right-0 bg-[var(--color-primary)]  rounded-full p-1 shadow">
-              <CameraIcon className='w-8 h-8 text-white' />
+              <CameraIcon className="w-8 h-8 text-white" />
             </button>
           </div>
 
@@ -53,7 +52,7 @@ export default function Profile() {
       {/* Profile Info Fields */}
       <div className=" p-6 gap-10  flex justify-between whitespace-nowrap">
         <div>
-          <div className='flex gap-4'>
+          <div className="flex gap-4">
             <FormField label="First Name">
               <Input value="Ayanda" disabled />
             </FormField>
@@ -61,7 +60,7 @@ export default function Profile() {
               <Input value="Ndlovu" disabled />
             </FormField>
           </div>
-          <div className='flex gap-4'>
+          <div className="flex gap-4">
             <FormField label="Race">
               <Input value="African" disabled />
             </FormField>
@@ -71,12 +70,12 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className='flex flex-col '>
+        <div className="flex flex-col ">
           <FormField label="Date of birth">
             <Input value="20-09-2022" disabled />
           </FormField>
-          
-          <div className='flex gap-4'>
+
+          <div className="flex gap-4">
             <FormField label="Education level">
               <Input value="Little Legends" disabled />
             </FormField>
@@ -89,4 +88,3 @@ export default function Profile() {
     </div>
   );
 }
-

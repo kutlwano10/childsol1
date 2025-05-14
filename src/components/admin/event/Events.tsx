@@ -6,11 +6,9 @@ import EventsCard from "./EventsCard";
 import { useRouter, useSearchParams } from "next/navigation";
 import EventCalender from "@/components/parent/events/EventCalender";
 import AddEventModal from "./AddEventModal";
+import BackButton from "@/components/ui/BackButton";
 
 export default function Events() {
-  const handleEdit = (id: string) => {
-    console.log(`Editing event with id: ${id}`);
-  };
 
   const handleDelete = (id: string) => {
     console.log(`Deleting event with id: ${id}`);
@@ -27,20 +25,12 @@ export default function Events() {
     router.push(`?${params.toString()}`);
   };
 
-  const handleBack = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("view");
-    router.push(`?${params.toString()}`);
-  };
-
   if (view === "calendar") {
     return (
       <div>
         <div className="flex justify-between pb-8">
           <Title level={2}>Calendar View</Title>
-          <Button variant="text" onClick={handleBack} size="md" type="button">
-            Back to Events
-          </Button>
+          <BackButton />
         </div>
         <EventCalender />
       </div>
@@ -53,6 +43,10 @@ export default function Events() {
       <div className="flex pb-12 justify-between">
         <Title level={2}>Upcoming Events</Title>
         <div className="flex gap-4">
+          <BackButton />
+          <Button onClick={()=> router.push('/admin/events/theme')} type="button">
+            Theme
+          </Button>
           <Button onClick={handleViewCalendar} fullWidth type="button">
             View Calender
           </Button>
@@ -69,7 +63,7 @@ export default function Events() {
           time="6:00 PM"
           timeRemaining="4h"
           accentColor="bg-blue-500"
-          onEdit={handleEdit}
+          onEdit={ () => setShowModal(true)}
           onDelete={handleDelete}
         />
         <EventsCard
@@ -79,7 +73,7 @@ export default function Events() {
           time="5:00 PM"
           timeRemaining="2h"
           accentColor="bg-purple-500"
-          onEdit={handleEdit}
+          onEdit={()=> setShowModal(true)}
           onDelete={handleDelete}
         />
       </div>

@@ -5,6 +5,7 @@ import Title from "@/components/ui/Title";
 import Button from "@/components/ui/ButtonUi";
 import { useRouter, useSearchParams } from "next/navigation";
 import EventCalender from "./EventCalender";
+import BackButton from "@/components/ui/BackButton";
 
 export default function Events() {
   const router = useRouter();
@@ -17,20 +18,12 @@ export default function Events() {
     router.push(`?${params.toString()}`);
   };
 
-  const handleBack = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("view");
-    router.push(`?${params.toString()}`);
-  };
-
   if (view === "calendar") {
     return (
       <div>
         <div className="flex justify-between pb-8">
           <Title level={2}>Calendar View</Title>
-          <Button variant="text" onClick={handleBack} size="md" type="button">
-            Back to Events
-          </Button>
+          <BackButton />
         </div>
         <EventCalender />
       </div>

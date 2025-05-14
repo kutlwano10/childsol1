@@ -9,6 +9,9 @@ import Button from "@/components/ui/ButtonUi";
 import Checkbox from "@/components/ui/Checkbox";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
+import ButtonUi from "@/components/ui/ButtonUi";
+import Link from "next/link";
+import { SearchCheck } from "lucide-react";
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>("");
@@ -94,21 +97,42 @@ export default function SignIn() {
       {/* Right side - Sign in form */}
       <div className="w-full bg-white  md:w-1/2 flex items-center rounded-r-2xl justify-center p-6">
         <div className="w-full max-w-md ">
-          <div className="mb-8">
-            <Title level={2} className="mb-1 text-center">
+          <div className="flex flex-col items-center text-center">
+            <Title
+              level={2}
+              className="mb-3 text-2xl font-semibold text-gray-800"
+            >
               Sign In
             </Title>
+
+            <div className="relative my-4 w-full max-w-xs">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative z-10 bg-white px-3 text-sm text-gray-500">
+                OR
+              </div>
+            </div>
+
+            <ButtonUi
+              fullWidth
+              onClick={() => router.push("/registration")}
+              variant="text"
+              className="text-[var(--color-secondary)] hover:underline"
+            >
+              Enroll Your Child
+            </ButtonUi>
           </div>
 
-          <form onSubmit={handleSubmit} className="py-6">
+          <form onSubmit={handleSubmit} className="py-2">
             <Input
-              label="Email Address"
+              label="Email "
               type="email"
               id="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="youremail@gmail.com"
+              placeholder="Email"
               className="text-[--color-text-light] rounded-2xl"
             />
 
@@ -118,11 +142,11 @@ export default function SignIn() {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="********"
+              placeholder="Password"
               className="py-6"
             />
 
-            <div className="flex justify-between items-center  mb-6">
+            <div className="flex justify-between items-center  mb-4">
               <Checkbox
                 id="remember-me"
                 name="remember-me"
@@ -130,12 +154,12 @@ export default function SignIn() {
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
-              <a
+              <Link
                 href="#"
                 className="text-[var(--color-secondary)] hover:text-[var(--color-secondary-dark)] "
               >
                 Forgot Password?
-              </a>
+              </Link>
             </div>
 
             <div className="w-full flex justify-center">
@@ -144,9 +168,14 @@ export default function SignIn() {
                 variant="primary"
                 fullWidth
                 size="lg"
-                className="mb-6 shadow-md"
+                className="mb-6 shadow-md flex items-center justify-center"
+                disabled={isLogging}
               >
-                {isLogging ? "Signing in..." : "Sign In"}
+                {isLogging ? (
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  "Sign In"
+                )}
               </Button>
             </div>
           </form>
@@ -157,19 +186,21 @@ export default function SignIn() {
             </div>
           )}
 
-          <div className="text-center ">
+          <div className="text-center pb-8">
             <a
-              href="/registration"
-              className="text-[var(--color-secondary)] text-lg hover:underline"
+              href="/registration/track"
+              className="text-[var(--color-secondary)] flex gap-3 justify-center items-center text-lg hover:underline"
             >
-              Don&apos;t have an account?
+              <SearchCheck className="w-5 h-5" />
+              Track Application
             </a>
           </div>
-          <div className="w-full flex justify-center">
+          <div className="w-full gap-4 items-center  flex justify-center">
+            <p>Powered By </p>
             <Image
-              width={200}
-              height={10}
-              className="object-cover "
+              width={250}
+              height={1}
+              className="object-cover"
               src="/hisgroup1.png"
               alt=""
             />

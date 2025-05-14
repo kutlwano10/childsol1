@@ -24,7 +24,9 @@ export default function Store() {
           <Button onClick={() => setShowModal(true)}>Add Product</Button>
         </div>
       </div>
-      <ProductList />
+      <div className="bg-white min-h-screen rounded-4xl">
+        <ProductList />
+      </div>
     </div>
   );
 }

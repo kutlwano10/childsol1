@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import AttendanceCheck from "./AttendanceCheck";
 import Title from "../../ui/Title";
 import AttandanceHistoryTable from "./AttendanceHistoryTable";
+import BackButton from "@/components/ui/BackButton";
 
 export default function Attendance() {
   const [checkInStatus, setCheckInStatus] = useState<"pending" | "completed">(
@@ -36,9 +37,12 @@ export default function Attendance() {
   };
   return (
     <div className="space-y-8">
-      <Title className="" level={2}>
-        Attendance
-      </Title>
+      <div className="flex justify-between items-center">
+        <Title className="" level={2}>
+          Attendance
+        </Title>
+        <BackButton />
+      </div>
       <div className="bg-white p-6 pb-4 rounded-3xl">
         <AttendanceCheck
           type="in"
