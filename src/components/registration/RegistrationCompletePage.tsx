@@ -22,7 +22,7 @@ export default function RegistrationCompletePage() {
       <Title className="max-w-xl text-center" level={5}>
         Your child&apos;s application has been successfully submitted. You will
         receive updates on the next steps shortly. You can now track the status
-        of the application by clicking <strong>"Track Application"</strong>.
+        of the application by clicking <strong>&quot;Track Application&quot;</strong>.
       </Title>
       <Button onClick={()=> router.push('/registration/track')} variant="primary" fullWidth size="lg" className="mb-6 shadow-md">
         Track Application

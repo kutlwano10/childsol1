@@ -7,19 +7,19 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import  Input  from "@/components/ui/Input";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import Input from "@/components/ui/Input";
+
 import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
 
 type ThemeProps = {
   showModal: boolean;
   setShowModal: (value: boolean) => void;
 };
 
-export default function CreateThemeModal({ showModal, setShowModal }: ThemeProps) {
+export default function CreateThemeModal({
+  showModal,
+  setShowModal,
+}: ThemeProps) {
   const [selectedDates, setSelectedDates] = React.useState<Date[]>([]);
   const [name, setName] = React.useState("");
 
@@ -31,7 +31,9 @@ export default function CreateThemeModal({ showModal, setShowModal }: ThemeProps
     );
 
     if (exists) {
-      setSelectedDates(selectedDates.filter((d) => d.toDateString() !== date.toDateString()));
+      setSelectedDates(
+        selectedDates.filter((d) => d.toDateString() !== date.toDateString())
+      );
     } else {
       setSelectedDates([...selectedDates, date]);
     }
@@ -41,13 +43,17 @@ export default function CreateThemeModal({ showModal, setShowModal }: ThemeProps
     <Dialog open={showModal} onOpenChange={() => setShowModal(false)}>
       <DialogContent className="sm:max-w-[400px] rounded-2xl px-6 py-4">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold">Create a theme</DialogTitle>
+          <DialogTitle className="text-xl font-semibold">
+            Create a theme
+          </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4">
           {/* Theme Name */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">Name of theme</label>
+            <label className="text-sm font-medium text-gray-700">
+              Name of theme
+            </label>
             <Input
               placeholder="Enter the name of theme"
               value={name}
@@ -57,11 +63,13 @@ export default function CreateThemeModal({ showModal, setShowModal }: ThemeProps
 
           {/* Calendar */}
           <div className="space-y-1">
-            <label className="text-sm font-medium text-gray-700">Select dates</label>
+            <label className="text-sm font-medium text-gray-700">
+              Select dates
+            </label>
             <Calendar
               mode="multiple"
               selected={selectedDates}
-              onSelect={()=>handleDateSelect}
+              onSelect={() => handleDateSelect}
               className="rounded-md border"
               fromMonth={new Date(2025, 8)} // September is month 8 (0-based)
               defaultMonth={new Date(2025, 8)}
@@ -78,4 +86,3 @@ export default function CreateThemeModal({ showModal, setShowModal }: ThemeProps
     </Dialog>
   );
 }
-

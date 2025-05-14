@@ -1,7 +1,7 @@
 import React from "react";
 import { BellAlertIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/ButtonUi";
+
 
 interface AttendanceCheckProps {
   // Type of check: 'in' for check-in, 'out' for check-out

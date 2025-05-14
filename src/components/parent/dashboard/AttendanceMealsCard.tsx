@@ -26,19 +26,6 @@ export function AttendanceMealsCard() {
       },
     ];
   
-    const getStatusBadge = (status: string) => {
-      const base = 'text-xs px-2 py-1 rounded-full font-medium';
-      switch (status) {
-        case 'Ate':
-          return `${base} bg-green-100 text-green-700`;
-        case 'Partially Ate':
-          return `${base} bg-yellow-100 text-yellow-700`;
-        case 'Refused':
-          return `${base} bg-red-100 text-red-600`;
-        default:
-          return `${base} bg-gray-100 text-gray-500`;
-      }
-    };
   
     return (
       <div className=" p-6 w-full ">

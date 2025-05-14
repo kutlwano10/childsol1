@@ -2,7 +2,7 @@
 
 import Title from "@/components/ui/Title";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 // Define TypeScript interfaces
 interface Application {
@@ -148,21 +148,20 @@ export default function ApplicationTracker() {
     }
   };
 
-  // Get status icon background color
+  
   const getStatusIconBgColor = (status: ApplicationStatus, currentStep: ApplicationStatus): string => {
-    // Define the order of steps
-    const steps: ApplicationStatus[] = ["received", "review", "approved"];
+
     
-    // For received step (always completed when showing tracker)
+
     if (currentStep === "received") return "bg-yellow-400";
     
-    // For review step
+
     if (currentStep === "review") {
       if (status === "received") return "bg-gray-200";
       else return "bg-yellow-400";
     }
     
-    // For approved step
+   
     if (currentStep === "approved") {
       if (status === "approved") return "bg-green-400";
       else if (status === "declined") return "bg-red-400";
