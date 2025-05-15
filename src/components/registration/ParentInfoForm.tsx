@@ -5,8 +5,8 @@ import Form from "@/components/ui/Form";
 import FormField from "@/components/ui/FormField";
 import Input from "@/components/ui/Input";
 import FileUpload from "@/components/ui/FileUpload";
-
 import { ParentInfo } from "@/interfaces/registration/registration";
+import { useRegistration } from "@/app/context/RegistrationContext";
 
 interface ParentInfoFormProps {
     initialData? : Partial<ParentInfo> ;
@@ -19,11 +19,29 @@ export default function ParentInfoForm({initialData = {}, onChange, onPrevious, 
 
   const [parentInfo, setParentInfo] = useState<Partial<ParentInfo>>(initialData);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const { setIsLoading } = useRegistration(); // Get setIsLoading from context
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onChange(parentInfo)
-    onNext()
+    
+    try {
+      // Show loading state
+      setIsLoading(true);
+      
+      // Simulate API call or validation (remove in production)
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      onChange(parentInfo);
+      onNext();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Handle error if needed
+    } finally {
+      // Hide loading state
+      setIsLoading(false);
+    }
   };
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -118,6 +136,93 @@ export default function ParentInfoForm({initialData = {}, onChange, onPrevious, 
               placeholder="Mother's Cell Number"
             />
           </FormField>
+
+          {/* Fathers information */}
+
+          <FormField label="Father's Name" required>
+            <Input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={parentInfo.motherFullName}
+              onChange={handleInputChange}
+              placeholder="Father's Name"
+            />
+          </FormField>
+          <FormField label="Father's Surname" required>
+            <Input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={parentInfo.motherFullName}
+              onChange={handleInputChange}
+              placeholder="Father's Surname"
+            />
+          </FormField>
+          <FormField label="Father's Date of Birth" required>
+            <Input
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              value={parentInfo.dateOfBirth}
+              onChange={handleInputChange}
+            />
+          </FormField>
+          <FormField label="Please upload the Fathers ID/Passport">
+            <FileUpload
+              id="Passport"
+              name="Passport"
+              onChange={handleFileChange("Passport")}
+              accept="image/*,application/pdf"
+            />
+          </FormField>
+          <FormField label="Home Language">
+            <Input
+              type="text"
+              id="homeLanguage"
+              name="homeLanguage"
+              value={parentInfo.homeLanguage}
+              onChange={handleInputChange}
+              placeholder="Enter home language"
+            />
+          </FormField>
+
+          
+          <FormField label="Father's Cell Number">
+            <Input
+              type="text"
+              id="cellNumber"
+              name="cellNumber"
+              value={parentInfo.cellNumber}
+              onChange={handleInputChange}
+              placeholder="Father's Cell Number"
+            />
+          </FormField>
+
+          <FormField label="Father's Marital Status">
+            <Input
+              type="text"
+              id="homeLanguage"
+              name="homeLanguage"
+              value={parentInfo.homeLanguage}
+              onChange={handleInputChange}
+              placeholder="Father's Marital Status"
+            />
+          </FormField>
+
+          <FormField label="Father's Nationality">
+            <Input
+              type="text"
+              id="homeLanguage"
+              name="homeLanguage"
+              value={parentInfo.homeLanguage}
+              onChange={handleInputChange}
+              placeholder="Father's Nationality"
+            />
+          </FormField>
+          
+
+          
           
           
           

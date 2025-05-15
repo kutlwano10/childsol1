@@ -7,10 +7,12 @@ import Input from '@/components/ui/Input';
 import RadioGroup from '@/components/ui/RadioGroup';
 import FileUpload from '@/components/ui/FileUpload';
 import { ChildInfo } from '@/interfaces/registration/registration';
+import { useRegistration } from '@/app/context/RegistrationContext';
+
 
 interface ChildInfoProps {
-  initialData? : Partial<ChildInfo> ;
-    onChange : (data: Partial<ChildInfo>) => void;
+  initialData?: Partial<ChildInfo>;
+  onChange: (data: Partial<ChildInfo>) => void;
     onPrevious: () => void;
     onNext: () => void;
 }
@@ -19,11 +21,29 @@ interface ChildInfoProps {
 export default function ChildInformationForm({initialData = {}, onChange, onNext} : ChildInfoProps) {
   const [childInfo, setChildInfo] = useState<Partial<ChildInfo>>(initialData);
 
-   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      onChange(childInfo)
-      onNext()
-    };
+   const { setIsLoading } = useRegistration(); // Get setIsLoading from context
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    try {
+      // Show loading state
+      setIsLoading(true);
+      
+      // Simulate API call or validation (remove in production)
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      onChange(childInfo);
+      onNext();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Handle error if needed
+    } finally {
+      // Hide loading state
+      setIsLoading(false);
+    }
+  };
+
 
     const handleRadioChange = (name: string, value: string) => {
       const updatedInfo = { ...childInfo, [name]: value };

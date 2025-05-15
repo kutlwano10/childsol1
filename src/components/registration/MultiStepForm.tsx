@@ -1,30 +1,26 @@
-"use client";
-import React, { useState } from "react";
+// components/MultiStepForm.tsx
+'use client';
 import ChildInformationForm from "./ChildInfoForm";
 import ParentInfoForm from "./ParentInfoForm";
 import Declaration from "./Declaration";
 import NextOfKinInfo from "./NextOfKinInfo";
 import Conditions from "./Conditions";
 import RegistrationCompletePage from "./RegistrationCompletePage";
-
+import { useRegistration } from "@/app/context/RegistrationContext";
 
 export default function MultiStepForm() {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({});
+  const { currentStep, setCurrentStep, formData, updateFormData } = useRegistration();
 
-  const nextStep = () => setStep(step + 1);
-
-  const prevStep = () => setStep(step - 1);
+  const nextStep = () => setCurrentStep(currentStep + 1);
+  const prevStep = () => setCurrentStep(currentStep - 1);
 
   const renderStep = () => {
-    switch (step) {
+    switch (currentStep) {
       case 1:
         return (
           <ChildInformationForm
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, childInfo: data }))
-            }
+            initialData={formData.childInfo}
+            onChange={(data) => updateFormData('childInfo', data)}
             onPrevious={prevStep}
             onNext={nextStep}
           />
@@ -32,58 +28,43 @@ export default function MultiStepForm() {
       case 2:
         return (
           <ParentInfoForm
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, parentInfo: data }))
-            }
+            initialData={formData.parentInfo}
+            onChange={(data) => updateFormData( 'parentInfo', data )}
             onPrevious={prevStep}
             onNext={nextStep}
           />
         );
-
-        case 3:
+      case 3:
         return (
           <NextOfKinInfo
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, ParentInfo: data }))
-            }
+            initialData={formData.nextOfKinInfo}
+            onChange={(data) => updateFormData('nextOfKinInfo', data )}
             onPrevious={prevStep}
             onNext={nextStep}
           />
         );
-
       case 4:
         return (
           <Declaration
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, ParentInfo: data }))
-            }
+            initialData={formData.parentInfo}
+            onChange={(data) => updateFormData('parentInfo', data )}
             onPrevious={prevStep}
             onNext={nextStep}
           />
         );
-
-        case 5:
+      case 5:
         return (
           <Conditions
-            initialData={formData}
-            onChange={(data) =>
-              setFormData((prev) => ({ ...prev, ParentInfo: data }))
-            }
+            initialData={formData.parentInfo}
+            onChange={(data) => updateFormData( 'parentInfo', data )}
             onPrevious={prevStep}
             onNext={nextStep}
           />
         );
-
-        
-
       default:
-        return (
-          <RegistrationCompletePage/>
-        );
+        return <RegistrationCompletePage />;
     }
   };
+
   return <div>{renderStep()}</div>;
 }

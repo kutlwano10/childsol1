@@ -124,10 +124,10 @@ export default function ApplicationTracker() {
       },
       waitingList: {
         label: "Waiting List",
-        color: "text-blue-500",
-        bgColor: "bg-blue-50",
-        borderColor: "border-blue-300",
-        progressPercentage: 80,
+        color: "text-yellow-500",
+        bgColor: "bg-yellow-50",
+        borderColor: "border-yellow-300",
+        progressPercentage: 100,
       },
     };
 
@@ -138,11 +138,11 @@ export default function ApplicationTracker() {
   const getProgressBarColor = (status: ApplicationStatus): string => {
     switch (status) {
       case "approved":
-        return "bg-green-400";
+        return "bg-yellow-400";
       case "declined":
-        return "bg-red-400";
+        return "bg-yellow-400";
       case "waitingList":
-        return "bg-blue-400";
+        return "bg-yellow-400";
       default:
         return "bg-yellow-400";
     }
@@ -165,7 +165,7 @@ export default function ApplicationTracker() {
     if (currentStep === "approved") {
       if (status === "approved") return "bg-green-400";
       else if (status === "declined") return "bg-red-400";
-      else if (status === "waitingList") return "bg-blue-400";
+      else if (status === "waitingList") return "bg-yellow-400";
       else return "bg-gray-200";
     }
     
@@ -175,11 +175,11 @@ export default function ApplicationTracker() {
   return (
     <>
       <div className="mt-8">
-        <div className="absolute top-8 left-8">
+        <div className="absolute top-12 left-12">
           <Image
             src="/childsol.png"
             alt="ChildSol Logo"
-            width={90}
+            width={100}
             height={90}
             className="rounded-md object-cover"
           />
@@ -188,7 +188,7 @@ export default function ApplicationTracker() {
       
       <div className="p-6 w-full max-w-6xl mx-auto">
         {/* Reference Number Input */}
-        <div className="border border-gray-300 rounded-lg bg-white p-6 mb-6 shadow-sm">
+        <div className=" bg-white p-6 mb-6 ">
           <h2 className="text-gray-800 text-center font-medium text-lg mb-4">
             Application Reference Tracker
           </h2>
@@ -207,7 +207,7 @@ export default function ApplicationTracker() {
               Track
             </button>
           </div>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          {error && <p className="text-red-500 text-center text-sm mt-2">{error}</p>}
         </div>
 
         {/* Application Progress Tracker */}
@@ -235,7 +235,7 @@ export default function ApplicationTracker() {
             </div>
 
             {/* Progress Bar */}
-            <div className="relative mb-12">
+            <div className="relative mx-6 mb-12">
               <div className="h-2 bg-gray-200 w-full rounded">
                 <div
                   className={`h-2 ${getProgressBarColor(application.status)} rounded`}
@@ -244,12 +244,12 @@ export default function ApplicationTracker() {
               </div>
 
               {/* Progress Markers */}
-              <div className="flex justify-between absolute w-full -mt-2">
+              <div className="flex justify-between absolute w-full mt-6">
                 {/* Received Marker */}
                 <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 ${getStatusIconBgColor(application.status, "received")} rounded-full flex items-center justify-center border-2 border-white`}>
+                  <div className={`w-12 h-12  rounded-full flex items-center justify-center border-2 border-white`}>
                     <svg
-                      className="w-8 h-8 text-white"
+                      className="w-10 h-10 text-[#9BC33E]"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -263,9 +263,9 @@ export default function ApplicationTracker() {
 
                 {/* Under Review Marker */}
                 <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 ${getStatusIconBgColor(application.status, "review")} rounded-full flex items-center justify-center border-2 border-white`}>
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 border-white`}>
                     <svg
-                      className="w-8 h-8 text-white"
+                      className="w-10 h-10 text-[#9BC33E]"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

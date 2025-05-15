@@ -3,6 +3,7 @@ import Form from "../ui/Form";
 import { ParentInfo } from "@/interfaces/registration/registration";
 import FormField from "@/components/ui/FormField";
 import Input from "@/components/ui/Input";
+import { useRegistration } from "@/app/context/RegistrationContext";
 
 interface ParentInfoProps {
   initialData?: Partial<ParentInfo>;
@@ -20,11 +21,28 @@ export default function Declaration({
   const [parentInfo, setParentInfo] =
     useState<Partial<ParentInfo>>(initialData);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onChange(parentInfo);
-    onNext();
-  };
+   const { setIsLoading } = useRegistration(); // Get setIsLoading from context
+  
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      
+      try {
+        // Show loading state
+        setIsLoading(true);
+        
+        // Simulate API call or validation (remove in production)
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
+        onChange(parentInfo);
+        onNext();
+      } catch (error) {
+        console.error('Form submission error:', error);
+        // Handle error if needed
+      } finally {
+        // Hide loading state
+        setIsLoading(false);
+      }
+    };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const updatedInfo = { ...parentInfo, [name]: value };

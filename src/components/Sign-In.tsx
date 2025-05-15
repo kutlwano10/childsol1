@@ -188,7 +188,7 @@ export default function SignIn() {
 
           <div className="text-center pb-8">
             <a
-              href="/registration/track"
+              href="/registration/tracker"
               className="text-[var(--color-secondary)] flex gap-3 justify-center items-center text-lg hover:underline"
             >
               <SearchCheck className="w-5 h-5" />

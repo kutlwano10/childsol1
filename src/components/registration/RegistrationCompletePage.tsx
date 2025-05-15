@@ -24,7 +24,7 @@ export default function RegistrationCompletePage() {
         receive updates on the next steps shortly. You can now track the status
         of the application by clicking <strong>&quot;Track Application&quot;</strong>.
       </Title>
-      <Button onClick={()=> router.push('/registration/track')} variant="primary" fullWidth size="lg" className="mb-6 shadow-md">
+      <Button onClick={()=> router.push('/registration/tracker')} variant="primary" fullWidth size="lg" className="mb-6 shadow-md">
         Track Application
       </Button>
     </div>
