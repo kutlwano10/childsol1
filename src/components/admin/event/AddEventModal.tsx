@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Dialog,
@@ -8,7 +10,7 @@ import {
 import Input from "@/components/ui/Input";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/ButtonUi";
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/components/ui/calendar"; // Assuming this is your new calendar
 import {
   Select,
   SelectContent,
@@ -16,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { today, CalendarDate } from "@internationalized/date";
 
 type AddEventProps = {
   showModal: boolean;
@@ -26,7 +29,7 @@ export default function AddEventModal({
   showModal,
   setShowModal,
 }: AddEventProps) {
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [date, setDate] = React.useState<CalendarDate | undefined>(today("en-US"));
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
@@ -66,22 +69,10 @@ export default function AddEventModal({
               </Select>
             </div>
 
-            {/* Deadline Date */}
+            {/* Deadline Date using new Calendar */}
             <div className="space-y-2">
-              <Label>Dead Line</Label>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Date" />
-                </SelectTrigger>
-                <SelectContent className="p-0">
-                  <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={setDate}
-                    initialFocus
-                  />
-                </SelectContent>
-              </Select>
+              <Label>Deadline</Label>
+              <Calendar value={date} onChange={setDate} />
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function Attendance() {
     year: "numeric",
   });
 
-  const currentTime = today.toLocaleTimeString("en-US", {
+  const currentTime = today.toLocaleTimeString("en-ZA", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,

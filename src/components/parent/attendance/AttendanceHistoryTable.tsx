@@ -51,7 +51,7 @@ export default function AttandanceHistoryTable() {
 
   // Format date for display
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('en-ZA', {
       month: 'long',
       day: 'numeric',
       year: 'numeric'
