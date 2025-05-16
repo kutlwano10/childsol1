@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import Input from "@/components/ui/Input";
 import { Label } from "@/components/ui/label";
-import Button from "@/components/ui/ButtonUi";
+import ButtonUi from "@/components/ui/ButtonUi";
 import { Calendar } from "@/components/ui/calendar"; // Assuming this is your new calendar
 import {
   Select,
@@ -78,7 +78,7 @@ export default function AddEventModal({
         </div>
 
         <div className="flex justify-end pt-4">
-          <Button className="px-6">Add</Button>
+          <ButtonUi className="px-6">Add</ButtonUi>
         </div>
       </DialogContent>
     </Dialog>

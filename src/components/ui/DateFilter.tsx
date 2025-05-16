@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import ButtonUi  from "@/components/ui/ButtonUi";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -18,13 +18,13 @@ export function DateFilter() {
       <span className="text-sm text-muted-foreground">Filter by date:</span>
       <Popover>
         <PopoverTrigger asChild>
-          <Button
+          <ButtonUi
             variant="outline"
             className="w-fit justify-start text-left font-normal"
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {date ? `${date.day} ${date.month} ${date.year}` : "Pick a date"}
-          </Button>
+          </ButtonUi>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0">
           <Calendar value={date} onChange={setDate} />

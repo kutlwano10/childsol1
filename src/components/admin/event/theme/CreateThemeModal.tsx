@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import  ButtonUi  from "@/components/ui/ButtonUi";
 import Input from "@/components/ui/Input";
 import { Calendar } from "@/components/ui/calendar";
 import { parseDate, CalendarDate } from "@internationalized/date";
@@ -143,13 +143,13 @@ export default function ThemeModal({
         </div>
 
         <DialogFooter className="mt-4">
-          <Button
+          <ButtonUi
             className="w-full rounded-4xl shadow-xl text-white hover:opacity-90"
             style={{ backgroundColor: color }}
             onClick={handleSubmit}
           >
             {editTheme ? "Update Theme" : "Create Theme"}
-          </Button>
+          </ButtonUi>
         </DialogFooter>
       </DialogContent>
     </Dialog>
