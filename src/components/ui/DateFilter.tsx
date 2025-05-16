@@ -11,7 +11,7 @@ import {
 import { CalendarDate, today } from "@internationalized/date";
 
 export function DateFilter() {
-  const [date, setDate] = React.useState<CalendarDate>(today("en-US"));
+  const [date, setDate] = React.useState<CalendarDate>(today("UTC"));
 
   return (
     <div className="flex items-center gap-2">
