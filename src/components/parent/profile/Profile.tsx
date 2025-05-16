@@ -3,25 +3,15 @@
 import React, { useState } from "react";
 import Title from "@/components/ui/Title";
 import ChildInformationUpdate from "./ChildInformationUpdate";
+import ParentInformationUpdate from "./ParentInformationUpdate";
+import OtherInformationUpdate from "./OtherInformationUpdate";
+import AllergiesUpdate from "./AllergiesUpdate";
 
 interface Menu {
   title: string;
   id: string;
 }
 
-const ParentsInformation = () => (
-  <div>
-    <Title level={3}>Parent&apos;s Information</Title>
-    {/* Add parent information form fields here */}
-  </div>
-);
-
-const OtherInformation = () => (
-  <div>
-    <Title level={3}>Other Information</Title>
-    {/* Add other information form fields here */}
-  </div>
-);
 
 export default function Profile() {
   const [activeSection, setActiveSection] = useState("child");
@@ -30,6 +20,7 @@ export default function Profile() {
     { title: "Child Information", id: "child" },
     { title: "Parent's Information", id: "parents" },
     { title: "Other Information", id: "other" },
+    { title: "Allergies", id: "allergies" },
   ];
 
   const renderActiveSection = () => {
@@ -37,9 +28,11 @@ export default function Profile() {
       case "child":
         return <ChildInformationUpdate />;
       case "parents":
-        return <ParentsInformation />;
+        return <ParentInformationUpdate />;
       case "other":
-        return <OtherInformation />;
+        return <OtherInformationUpdate />;
+        case "allergies":
+        return <AllergiesUpdate />;
       default:
         return <ChildInformationUpdate />;
     }

@@ -16,6 +16,7 @@ const ProductList: React.FC = () => {
       {productData.map((product) => (
         <Link key={product.id} href={'/admin/store/id'}>
           <ProductCard
+          stock='Only 5 left'
             name={product.name}
             price={product.price}
             imageUrl={product.imageUrl}

@@ -5,10 +5,11 @@ import Title from './Title';
 interface ProductCardProps {
   name: string;
   price: string;
+  stock: string
   imageUrl?: string; // Optional image URL
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, price, imageUrl }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ name, price, imageUrl ,stock}) => {
   return (
     <div className="product-card bg-[#FFAE1D1A] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
       {/* Image Section */}
@@ -43,6 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, price, imageUrl }) => {
 
       {/* Product Info Section */}
       <div className="p-4 flex text-center flex-col flex-grow">
+        <p className="text-[#9BC33E]  mt-auto">{stock}</p>
         <Title level={3} className="text-lg font-medium text-gray-800 mb-1 line-clamp-2">{name}</Title>
         <p className="text-gray-800  mt-auto">{price}</p>
       </div>

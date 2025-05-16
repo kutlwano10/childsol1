@@ -12,24 +12,24 @@ export default function ProductDetails() {
         <Title level={2}>Store</Title>
         <BackButton />
       </div>
-      <div className="flex w-full min-h-[80vh] gap-12 justify-center mx-auto items-center  rounded-3xl flex-row p-4 bg-white ">
+      <div className="flex w-full min-h-[80vh] gap-20 justify-center mx-auto items-center  rounded-3xl flex-row p-4 bg-white ">
         {/* Product Image */}
 
         <div className="max-w-4xl ">
           <Image
             src="/t-shirt.png"
             alt="Green Golf T-Shirt"
-            width={400}
+            width={500}
             height={400}
             priority
             className="max-w-full h-auto object-contain"
           />
         </div>
         {/* Product Information */}
-        <div className="min-w-sm">
-          <h1 className="text-2xl font-bold text-gray-900">
+        <div className="min-w-sm space-y-12">
+          <Title className="text-2xl font-bold text-gray-900">
             Green Golf T-Shirt
-          </h1>
+          </Title>
           <p className="text-lg font-semibold mt-2">R200</p>
           <p className="text-gray-700 mt-2">Green Golf Tshirt - Unisex</p>
           <div className="mt-6">

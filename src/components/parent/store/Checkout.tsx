@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Title from "@/components/ui/Title";
-import Button from "@/components/ui/ButtonUi";
+
+import BackButton from "@/components/ui/BackButton";
 
 interface Product {
   id: string;
@@ -55,12 +56,12 @@ export default function Checkout() {
   );
 
   return (
-    <div>
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <Title level={2}>Store</Title>
-        <Button variant="text">Back</Button>
+        <Title level={2}>Checkout</Title>
+        <BackButton/>
       </div>
-      <div className="flex bg-white rounded-3xl flex-col md:flex-row gap-8 max-w-7xl mx-auto p-4">
+      <div className="flex bg-white rounded-3xl flex-col md:flex-row gap-8  mx-auto p-4">
         {/* Left side - Cart items */}
         <div className="flex-1">
           <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>

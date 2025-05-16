@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { SendHorizonal } from "lucide-react";
+import {SendHorizonalIcon } from "lucide-react";
 
 interface Message {
   id: number;
@@ -84,7 +84,7 @@ export default function Communications() {
   return (
     <div className="flex min-h-[80vh] rounded-4xl bg-white">
       {/* Sidebar */}
-      <div className="w-[300px] bg-white border-r">
+      <div className="w-[300px] rounded-l-4xl bg-white border-r">
         <div className="p-4 text-sm text-gray-500">Groups</div>
         <div className="border-t">
           <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
@@ -131,9 +131,9 @@ export default function Communications() {
       </div>
 
       {/* Main chat area */}
-      <div className="flex flex-col flex-1 h-full">
+      <div className="flex rounded-r-4xl flex-col flex-1 h-full">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b bg-white">
+        <div className="flex items-center rounded-tr-4xl justify-between p-4 border-b bg-white">
           <div className="flex items-center gap-3">
             <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
               LJ
@@ -183,7 +183,7 @@ export default function Communications() {
               className="flex-1 bg-transparent text-sm focus:outline-none"
             />
             <button onClick={handleSend}>
-              <SendHorizonal size={18} className="text-gray-500" />
+              <SendHorizonalIcon size={18} className="text-orange-500" />
             </button>
           </div>
         </div>

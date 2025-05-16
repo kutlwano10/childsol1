@@ -5,59 +5,13 @@ import React, { useState } from "react";
 import { AttendanceMealsCard } from "@/components/parent/dashboard/AttendanceMealsCard";
 import { DailyReportCard } from "@/components/parent/dashboard/DailyReportCard";
 import Title from "@/components/ui/Title";
-import CommentsCard from "./CommentsCard";
 import ReportsHistory from "./ReportHistory";
 import Activities from "@/components/parent/dashboard/Activities";
+import Image from "next/image";
 
-const initialComments = [
-  {
-    id: "1",
-    author: {
-      name: "Mrs Lee",
-      avatar: "/Profile.png", // Replace with actual image path
-    },
-    content:
-      "Today, Ayanda had a wonderful day! They were full of energy and participated enthusiastically in all activities. They especially enjoyed [activity e.g., storytime or painting] and showed great focus. During playtime, they interacted well with their friends, sharing and taking turns. Overall, a happy and productive day!",
-    timestamp: "30m ago",
-  },
-  {
-    id: "2",
-    author: {
-      name: "Mrs Lee",
-      avatar: "/Profile.png", // Replace with actual image path
-    },
-    content:
-      "Today, Ayanda had a wonderful day! They were full of energy and participated enthusiastically in all activities. They especially enjoyed [activity e.g., storytime or painting] and showed great focus. During playtime, they interacted well with their friends, sharing and taking turns. Overall, a happy and productive day!",
-    timestamp: "30m ago",
-  },
-  {
-    id: "3",
-    author: {
-      name: "Evan",
-      avatar: "",
-    },
-    content:
-      "Thank you for the update! I'm so happy to hear that Ayanda had a great day and enjoyed the activities. We appreciate all the care and support from the teachers. Looking forward to another wonderful day tomorrow!",
-    timestamp: "2m ago",
-  },
-];
 
 export default function Reports() {
-  const [comments, setComments] = useState(initialComments);
-
-  const handleSendComment = (message: string) => {
-    const newComment = {
-      id: Date.now().toString(),
-      author: {
-        name: "You", // Replace with actual user name
-        avatar: "", // Replace with actual avatar URL or leave empty for initial
-      },
-      content: message,
-      timestamp: "Just now",
-    };
-
-    setComments([...comments, newComment]);
-  };
+ 
 
   const reports = [
     {
@@ -102,8 +56,13 @@ export default function Reports() {
           <AttendanceMealsCard />
           <Activities />
         </div>
-        {/* <UpcomingEventsCard /> */}
-        <CommentsCard comments={comments} onSendComment={handleSendComment} />
+        <Image
+          src={"/Focus Star.svg"}
+          alt="report"
+          width={400}
+          height={600}
+          sizes=""
+        />
       </div>
       <ReportsHistory
         reports={reports}

@@ -7,13 +7,13 @@ import {
   BookOpenIcon,
   CalendarIcon,
   ChatBubbleLeftRightIcon,
-  ArrowLeftOnRectangleIcon,
   ChartBarIcon,
   TicketIcon,
 } from "@heroicons/react/24/outline";
-import { ShoppingBagIcon } from "lucide-react";
+import { ShoppingBagIcon, User2 } from "lucide-react";
 import { useAuth } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/20/solid";
 
 interface MenuItem {
   icon: React.ReactNode;
@@ -77,6 +77,13 @@ export default function Menu() {
           dynamicPrefix: true,
         },
         {
+          icon: <User2 className="h-5 w-5" />,
+          label: "Profile",
+          href: "profile",
+          visible: ["parent"],
+          dynamicPrefix: true,
+        },
+        {
           icon: <BookOpenIcon className="h-5 w-5" />,
           label: "Payments",
           href: "payments",
@@ -136,7 +143,7 @@ export default function Menu() {
       title: "ACCOUNT",
       items: [
         {
-          icon: <ArrowLeftOnRectangleIcon className="h-5 w-5" />,
+          icon: <ArrowLeftEndOnRectangleIcon className="h-5 w-5" />,
           label: "Logout",
           onClick: handleLogout,
           visible: ["admin", "staff", "parent", "super-admin"],
@@ -146,42 +153,45 @@ export default function Menu() {
   ];
 
   return (
-    <div className="mt-4 text-base">
-      {menuItems.map((group) => (
-        <div className="flex flex-col gap-2 text-white" key={group.title}>
-          <div className="flex flex-col gap-1">
-            {group.items
-              .filter((item) => {
-                if (!item.visible) return true;
-                return item.visible.includes(user.role);
-              })
-              .map((item) => (
-                <div
-                  key={item.label}
-                  onClick={item.onClick}
-                  className={`flex items-center rounded-xl hover:bg-white justify-start gap-4 text-white hover:text-secondary px-2 py-2 ${
-                    item.onClick ? "cursor-pointer" : ""
-                  }`}
-                >
-                  <span className="w-5">{item.icon}</span>
-                  {item.href ? (
-                    <Link
-                      href={
-                        item.dynamicPrefix
-                          ? `/${user.role}/${item.href}`
-                          : `/${item.href}`
-                      }
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <span>{item.label}</span>
-                  )}
-                </div>
-              ))}
-          </div>
+  <div className="mt-4 text-base">
+    {menuItems.map((group) => (
+      <div className="flex flex-col gap-2 text-white" key={group.title}>
+        <div className="flex flex-col gap-1">
+          {group.items
+            .filter((item) => {
+              if (!item.visible) return true;
+              return item.visible.includes(user.role);
+            })
+            .map((item) => (
+              <div
+                key={item.label}
+                className={`flex items-center rounded-xl hover:bg-white justify-start gap-4 text-white hover:text-secondary px-2 py-2 ${
+                  item.onClick || !item.href ? "cursor-pointer" : ""
+                }`}
+              >
+                <span className="w-5">{item.icon}</span>
+                {item.href ? (
+                  <Link
+                    href={
+                      item.dynamicPrefix
+                        ? `/${user.role}/${item.href}`
+                        : `/${item.href}`
+                    }
+                    onClick={item.onClick}
+                    className="w-full"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span onClick={item.onClick} className="w-full">
+                    {item.label}
+                  </span>
+                )}
+              </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    ))}
+  </div>
+);
 }

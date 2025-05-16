@@ -45,8 +45,8 @@ export default function Input({
           bg-white
           border border-[var(--color-gray-300)]
           text-[--color-text-light] rounded-2xl
-          focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
-          focus:border-[var(--color-primary)]
+          focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]
+          focus:border-[var(--color-secondary)]
           transition-all duration-200
           ${error ? 'border-[var(--color-danger)] focus:ring-[var(--color-danger)]' : ''}
         `}

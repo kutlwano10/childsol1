@@ -130,10 +130,10 @@ export default function ChildInformationUpdate() {
         Child Information
       </Title>
       <Form onSubmit={handleSubmit}>
-        <div className="flex w-full py-8 gap-20">
+        <div className="flex mx-auto justify-center w-full py-8 gap-20">
           {/* Left Column */}
-          <div className="flex-1 flex flex-col space-y-4">
-            <FormField label="Full Name" required>
+          <div className="flex-1 max-w-md flex flex-col space-y-4">
+            <FormField label="" required>
               <Input
                 name="fullName"
                 value={childInfo.fullName || ""}
@@ -142,7 +142,7 @@ export default function ChildInformationUpdate() {
               />
             </FormField>
 
-            <FormField label="Date of Birth" required>
+            <FormField label="" >
               <Input
                 type="date"
                 name="dateOfBirth"
@@ -151,7 +151,7 @@ export default function ChildInformationUpdate() {
               />
             </FormField>
 
-            <FormField label="ID/Passport Number">
+            <FormField label="">
               <Input
                 name="passportNumber"
                 value={childInfo.passportNumber || ""}
@@ -160,7 +160,7 @@ export default function ChildInformationUpdate() {
               />
             </FormField>
 
-            <FormField label="Home Language">
+            <FormField label="">
               <Input
                 name="homeLanguage"
                 value={childInfo.homeLanguage || ""}
@@ -169,7 +169,7 @@ export default function ChildInformationUpdate() {
               />
             </FormField>
 
-            <FormField label="Campus" required>
+            <FormField label="Campus" >
               <RadioGroup
                 name="campus"
                 options={campusOptions}
@@ -191,8 +191,8 @@ export default function ChildInformationUpdate() {
           </div>
 
           {/* Right Column */}
-          <div className="flex-1 space-y-4">
-            <FormField label="Allergies">
+          <div className="flex-1 max-w-md flex flex-col ">
+            <FormField label="">
               <Input
                 name="allergies"
                 value={childInfo.allergies || ""}
@@ -202,7 +202,7 @@ export default function ChildInformationUpdate() {
               />
             </FormField>
 
-            <FormField label="Chronic Conditions">
+            <FormField label="">
               <Input
                 name="chronicConditions"
                 value={childInfo.chronicCondition || ""}

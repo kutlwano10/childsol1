@@ -44,7 +44,7 @@ export const UpcomingEventsCard: React.FC<UpcomingEventsProps> = ({
 }) => {
   return (
     <Card className={className}>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-8">
         <h3 className="text-lg font-semibold">{title}</h3>
         {showViewAll && (
           <button 
@@ -56,13 +56,13 @@ export const UpcomingEventsCard: React.FC<UpcomingEventsProps> = ({
         )}
       </div>
       
-      <div className="space-y-6">
+      <div className="space-y-8">
         {events.map((event) => (
           <div key={event.id} className="flex">
             <div 
-              className={`w-1 rounded-full mr-4 ${event.colorCode || 'bg-green-500'}`}
+              className={`w-1 h-20 rounded-full mr-4 ${event.colorCode || 'bg-green-500'}`}
             ></div>
-            <div>
+            <div className='space-y-8'>
               <h4 className="font-medium text-sm">{event.title}</h4>
               {event.description && <p className="text-sm text-gray-600">{event.description}</p>}
               <p className="text-xs text-gray-500 mt-1">{event.date} | {event.time}</p>
