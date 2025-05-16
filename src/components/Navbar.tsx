@@ -9,7 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
+import ButtonUi  from '@/components/ui/ButtonUi';
 
 import { MagnifyingGlassIcon, ChevronDownIcon, ShoppingCartIcon, BellIcon } from '@heroicons/react/20/solid';
 import { User2 } from 'lucide-react';
@@ -52,10 +52,10 @@ export default function Navbar() {
         {/* Profile Dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="bg-white  flex items-center rounded-xl p-6">
+            <ButtonUi variant="text" className="bg-white  flex items-center rounded-xl p-6">
               <span className="font-medium text-sm">Evan Ndlovu</span>
               <ChevronDownIcon className="h-5 w-5 text-[var(--color-secondary)] ml-1" />
-            </Button>
+            </ButtonUi>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuItem
